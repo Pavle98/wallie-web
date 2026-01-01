@@ -1,58 +1,14 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --primary-accent: #39FF14;
-  --secondary-accent: #8A2BE2;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-inter);
-}
-
-/* Keep only box-sizing reset (Tailwind already applies a reset via preflight) */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  background: #0a0a0a;
-  color: #ededed;
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  overflow-x: hidden;
-}
-
-/* Ensure video covers full area */
-video {
-  object-fit: cover;
-}
-
-/* Custom scrollbar for dark theme */
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #0a0a0a;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #39ff14;
-  border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #8a2be2;
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
 }
