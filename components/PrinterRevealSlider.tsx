@@ -1,38 +1,141 @@
 "use client";
 
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
 export default function PrinterRevealSlider() {
   const [sliderWidth, setSliderWidth] = useState(0);
+  const [sliderPosition, setSliderPosition] = useState(50); // Percentage: 0-100
+  const [isDragging, setIsDragging] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0);
-  const progress = useTransform(x, [0, sliderWidth], [0, 100]);
-  const clipPath = useTransform(progress, (p) => `inset(0 ${100 - p}% 0 0)`);
+  const handleRef = useRef<HTMLDivElement>(null);
+
+  // Convert percentage to pixel position
+  const pixelPosition = (sliderPosition / 100) * sliderWidth;
+  const clipPath = `inset(0 ${100 - sliderPosition}% 0 0)`;
 
   useEffect(() => {
-    if (containerRef.current) {
+    if (containerRef.current && !isInitialized) {
       const width = containerRef.current.offsetWidth;
       setSliderWidth(width);
-      // Set initial position to 50%
-      x.set(width * 0.5);
+      setIsInitialized(true);
     }
 
     const handleResize = () => {
-      if (containerRef.current) {
+      if (containerRef.current && isInitialized) {
         const width = containerRef.current.offsetWidth;
         setSliderWidth(width);
         // Maintain current percentage on resize
-        const currentProgress = progress.get();
-        x.set((width * currentProgress) / 100);
+        // Position is already in percentage, so no recalculation needed
       }
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [x, progress]);
+  }, [isInitialized]);
+
+  const updatePosition = (clientX: number) => {
+    if (!containerRef.current || !isDragging) return;
+
+    const rect = containerRef.current.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setSliderPosition(percentage);
+  };
+
+  const handleStart = (clientX: number) => {
+    setIsDragging(true);
+    updatePosition(clientX);
+  };
+
+  const handleMove = (clientX: number) => {
+    if (!isDragging) return;
+    updatePosition(clientX);
+  };
+
+  const handleEnd = () => {
+    setIsDragging(false);
+    // DO NOT reset position - it stays where user left it
+  };
+
+  // Mouse handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    handleStart(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    handleMove(e.clientX);
+  };
+
+  const handleMouseUp = (e: React.MouseEvent) => {
+    e.preventDefault();
+    handleEnd();
+  };
+
+  // Touch handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    e.preventDefault();
+    const touch = e.touches[0];
+    if (touch) {
+      handleStart(touch.clientX);
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    if (touch) {
+      handleMove(touch.clientX);
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    e.preventDefault();
+    handleEnd();
+  };
+
+  // Global mouse/touch move handlers when dragging
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      handleMove(e.clientX);
+    };
+
+    const handleGlobalMouseUp = () => {
+      handleEnd();
+    };
+
+    const handleGlobalTouchMove = (e: TouchEvent) => {
+      const touch = e.touches[0];
+      if (touch) {
+        handleMove(touch.clientX);
+      }
+    };
+
+    const handleGlobalTouchEnd = () => {
+      handleEnd();
+    };
+
+    window.addEventListener("mousemove", handleGlobalMouseMove);
+    window.addEventListener("mouseup", handleGlobalMouseUp);
+    window.addEventListener("touchmove", handleGlobalTouchMove, { passive: false });
+    window.addEventListener("touchend", handleGlobalTouchEnd);
+
+    return () => {
+      window.removeEventListener("mousemove", handleGlobalMouseMove);
+      window.removeEventListener("mouseup", handleGlobalMouseUp);
+      window.removeEventListener("touchmove", handleGlobalTouchMove);
+      window.removeEventListener("touchend", handleGlobalTouchEnd);
+    };
+  }, [isDragging, sliderWidth]);
 
   return (
     <section id="technology" className="relative bg-[#0a0a0a] py-24 px-4">
@@ -49,11 +152,11 @@ export default function PrinterRevealSlider() {
 
         {/* Frame Container with Dark Mat Background */}
         <div className="bg-[#0b0b0b] p-4 md:p-6 rounded-lg border border-white/10 shadow-2xl">
-          {/* Slider Container - Full Viewport Height */}
+          {/* Slider Container - Responsive Height */}
           <div
             ref={containerRef}
-            className="relative w-full h-screen max-h-[900px] overflow-hidden rounded-md border border-white/20 shadow-inner"
-            style={{ height: '100svh', maxHeight: '900px' }}
+            className="relative w-full aspect-[4/3] min-h-[500px] md:h-screen md:max-h-[900px] md:aspect-auto overflow-hidden rounded-md border border-white/20 shadow-inner select-none"
+            style={{ touchAction: isDragging ? "none" : "pan-y" }}
           >
             {/* Before Image (Plain concrete wall) - Bottom layer */}
             <div className="absolute inset-0">
@@ -61,14 +164,14 @@ export default function PrinterRevealSlider() {
                 src="/noprint.png"
                 alt="Plain concrete wall"
                 fill
-                className="object-cover"
+                className="object-contain md:object-cover"
                 priority
                 unoptimized
               />
             </div>
 
             {/* After Image (Colorful mural) - Top revealed layer */}
-            <motion.div
+            <div
               style={{ clipPath }}
               className="absolute inset-0"
             >
@@ -76,19 +179,26 @@ export default function PrinterRevealSlider() {
                 src="/afterprint.png"
                 alt="Colorful wall mural"
                 fill
-                className="object-cover"
+                className="object-contain md:object-cover"
                 priority
                 unoptimized
               />
-            </motion.div>
+            </div>
 
             {/* Simple Drag Handle */}
-            <motion.div
-              drag="x"
-              dragConstraints={containerRef}
-              dragElastic={0}
-              style={{ x }}
-              className="absolute top-0 z-20 flex h-full cursor-grab items-center active:cursor-grabbing"
+            <div
+              ref={handleRef}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              style={{
+                transform: `translateX(calc(${pixelPosition}px - 0.5px))`,
+                touchAction: "none",
+              }}
+              className="absolute top-0 z-20 flex h-full cursor-grab items-center active:cursor-grabbing touch-none select-none"
             >
               {/* White Line with Arrows */}
               <div className="relative flex h-full items-center">
@@ -101,7 +211,7 @@ export default function PrinterRevealSlider() {
                   <ChevronRight className="h-5 w-5 text-white" />
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
 

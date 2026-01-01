@@ -17,8 +17,9 @@ export default function Navbar() {
     { name: "Home", href: "#" },
     { name: "Technology", href: "#technology" },
     { name: "Portfolio", href: "#portfolio" },
-    { name: "Contact", href: "#contact" },
   ];
+  
+  const contactLink = { name: "Contact", href: "#contact" };
 
   return (
     <motion.nav
@@ -44,9 +45,8 @@ export default function Navbar() {
             WALLIE
           </motion.a>
 
-          {/* Navigation Links */}
+          {/* Navigation Links - Hidden on mobile, visible on desktop */}
           <div className="hidden items-center gap-8 md:flex !pr-[16px] lg:!pr-[24px]">
-
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
@@ -61,20 +61,16 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
-          <button className="md:hidden text-white" aria-label="Open menu">
-            <svg
-              className="h-6 w-6"
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+          {/* Contact Link - Visible on all screens */}
+          <motion.a
+            href={contactLink.href}
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="text-sm font-medium text-white/90 transition-colors hover:text-white"
+          >
+            {contactLink.name}
+          </motion.a>
         </div>
       </div>
     </motion.nav>
