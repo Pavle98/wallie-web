@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import PrinterRevealSlider from "@/components/PrinterRevealSlider";
+import HowItWorks from "@/components/HowItWorks";
 import BentoGrid from "@/components/BentoGrid";
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <PrinterRevealSlider />
+      <HowItWorks />
       <BentoGrid />
       <footer className="border-t border-[#ededed]/10 bg-[#0a0a0a] py-12 px-4">
         <div className="mx-auto max-w-7xl text-center">
