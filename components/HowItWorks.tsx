@@ -6,18 +6,18 @@ import { useRef } from "react";
 const steps = [
   {
     number: "01",
-    title: "Consultation & Design",
-    description: "Choose from our catalog or provide your own high-res image. We help you fit it perfectly to your wall dimensions.",
+    title: "Project Specification",
+    description: "Wall dimensions, surface type, and artwork requirements are documented. Technical parameters are confirmed.",
   },
   {
     number: "02",
-    title: "On-Site Assembly",
-    description: "We bring the vertical printer to your location and assemble it on the spot. Our technicians calibrate the machine for your specific wall type.",
+    title: "Equipment Deployment",
+    description: "Vertical printer is transported to site and assembled. Machine calibration is performed for the specific surface material.",
   },
   {
     number: "03",
-    title: "The Transformation",
-    description: "Watch as the artwork is printed directly onto the surface. The UV ink cures immediately, leaving a durable, high-quality finish.",
+    title: "Print Execution",
+    description: "UV-curable ink is applied directly to the surface. Immediate curing ensures permanent adhesion and durability.",
   },
 ];
 
@@ -58,15 +58,27 @@ export default function HowItWorks() {
   return (
     <section ref={sectionRef} className="relative bg-zinc-950 py-24 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center text-4xl font-bold uppercase tracking-tighter text-[#ededed] sm:text-5xl md:text-6xl"
-        >
-          How It Works
-        </motion.h2>
+        {/* Section Intro */}
+        <div className="mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-2 text-sm font-mono uppercase tracking-wider text-zinc-400"
+          >
+            OPERATIONAL PROCEDURE
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl font-bold uppercase tracking-tighter text-[#ededed] sm:text-5xl md:text-6xl"
+          >
+            How It Works
+          </motion.p>
+        </div>
 
         <div className="relative mx-auto max-w-4xl">
           {/* Timeline Rail - Gray Background Line */}

@@ -21,27 +21,25 @@ export default function Hero() {
       </video>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/50" />
+      <div className="absolute inset-0 bg-black/35" />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12">
+      <div className="relative z-10 w-full max-w-4xl ml-0 px-6 md:px-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-6"
         >
           {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-            className="text-5xl font-bold uppercase tracking-tighter text-white text-left leading-tight"
+            className="text-3xl font-bold uppercase tracking-tighter text-white text-left leading-tight sm:text-3xl md:text-3xl"
             style={{ letterSpacing: "-0.02em" }}
           >
-            TRANSFORM WALLS
-            <br />
-            INTO ART.
+            ARCHITECTURAL WALL PRINTING. EXECUTED BY ROBOT.
           </motion.h1>
 
           {/* Subhead */}
@@ -49,9 +47,11 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg text-white/90 sm:text-xl leading-tight mb-4"
+            className="text-base text-white/90 sm:text-lg leading-tight"
           >
-            Direct-to-wall vertical printing technology in Belgrade.
+            Permanent UV printing directly into the surface.
+            <br />
+            No vinyl. No decals. No manual work.
           </motion.p>
 
           {/* Button */}
@@ -59,11 +59,15 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+            className="flex flex-col gap-2"
           >
             <button className="group inline-flex items-center gap-3 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200">
-              <span>Get a Quote</span>
+              <span>REQUEST A PROJECT CONSULTATION</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
+            <p className="text-sm text-white/60">
+              For architects, designers, and commercial projects.
+            </p>
           </motion.div>
         </motion.div>
       </div>

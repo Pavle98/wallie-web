@@ -140,15 +140,15 @@ export default function PrinterRevealSlider() {
   return (
     <section id="technology" className="relative bg-[#0a0a0a] py-24 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center text-4xl font-bold uppercase tracking-tighter text-[#ededed] sm:text-5xl md:text-6xl"
-        >
-          Don't Paint. Print.
-        </motion.h2>
+        {/* Section Intro */}
+        <div className="mb-12">
+          <h2 className="mb-2 text-sm font-mono uppercase tracking-wider text-zinc-400">
+            EXECUTION VERIFICATION
+          </h2>
+          <p className="text-sm text-zinc-500">
+            Direct-to-surface application on concrete substrate.
+          </p>
+        </div>
 
         {/* Frame Container with Dark Mat Background */}
         <div className="bg-[#0b0b0b] p-4 md:p-6 rounded-lg border border-white/10 shadow-2xl">
@@ -214,17 +214,6 @@ export default function PrinterRevealSlider() {
             </div>
           </div>
         </div>
-
-        {/* Instructions */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-8 text-center text-sm text-[#ededed]/60 sm:text-base"
-        >
-          Drag to compare before and after
-        </motion.p>
       </div>
     </section>
   );

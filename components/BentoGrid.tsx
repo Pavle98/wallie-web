@@ -56,15 +56,27 @@ export default function BentoGrid() {
   return (
     <section className="bg-[#0a0a0a] py-24 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center text-4xl font-bold uppercase tracking-tighter text-[#ededed] sm:text-5xl md:text-6xl"
-        >
-          Technology That Transforms
-        </motion.h2>
+        {/* Section Intro */}
+        <div className="mb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mb-2 text-sm font-mono uppercase tracking-wider text-zinc-400"
+          >
+            SYSTEM CAPABILITIES
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-4xl font-bold uppercase tracking-tighter text-[#ededed] sm:text-5xl md:text-6xl"
+          >
+            Technology That Transforms
+          </motion.p>
+        </div>
 
         <motion.div
           variants={containerVariants}
@@ -116,4 +128,3 @@ export default function BentoGrid() {
     </section>
   );
 }
-
