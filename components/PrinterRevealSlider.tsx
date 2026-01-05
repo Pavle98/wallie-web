@@ -4,8 +4,10 @@ import { motion, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { getTranslations, type Locale } from "@/lib/i18n";
 
-export default function PrinterRevealSlider() {
+export default function PrinterRevealSlider({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
   const [sliderWidth, setSliderWidth] = useState(0);
   const [sliderPosition, setSliderPosition] = useState(50); // Percentage: 0-100
   const [isDragging, setIsDragging] = useState(false);
@@ -143,10 +145,10 @@ export default function PrinterRevealSlider() {
         {/* Section Intro */}
         <div className="mb-12">
           <h2 className="mb-2 text-sm font-mono uppercase tracking-wider text-zinc-400">
-            EXECUTION VERIFICATION
+            {t.sections.executionVerification}
           </h2>
           <p className="text-sm text-zinc-500">
-            Direct-to-surface application on concrete substrate.
+            {t.sections.executionVerificationDesc}
           </p>
         </div>
 

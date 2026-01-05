@@ -1,30 +1,17 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { getTranslations, type Locale } from "@/lib/i18n";
 
-const metrics = [
-  { label: "COMPLETED PROJECTS", value: "47+" },
-  { label: "PRINTED AREA", value: "1,240 m²" },
-  { label: "OPERATIONAL SINCE", value: "2022" },
-  { label: "RESPONSE TIME", value: "< 8h" },
-];
-
-const testimonials = [
-  {
-    quote: "Zero surface prep required. Direct application on existing concrete.",
-    author: "M.P.",
-    role: "Architect",
-    location: "Belgrade",
-  },
-  {
-    quote: "Durable finish after 18 months in high-traffic commercial space.",
-    author: "D.K.",
-    role: "Café owner",
-    location: "Novi Sad",
-  },
-];
-
-export default function TrustStack() {
+export default function TrustStack({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  
+  const metrics = [
+    { label: t.trust.completedProjects, value: "47+" },
+    { label: t.trust.printedArea, value: "1,240 m²" },
+    { label: t.trust.operationalSince, value: "2022" },
+    { label: t.trust.responseTime, value: "< 8h" },
+  ];
   return (
     <section className="bg-[#0a0a0a] py-16 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
@@ -35,7 +22,7 @@ export default function TrustStack() {
           transition={{ duration: 0.4 }}
           className="mb-8 text-sm font-mono uppercase tracking-wider text-zinc-400"
         >
-          TRUST
+          {t.sections.trust}
         </motion.h2>
 
         {/* Metrics Grid */}
@@ -60,7 +47,7 @@ export default function TrustStack() {
 
         {/* Testimonials */}
         <div className="grid gap-6 md:grid-cols-2">
-          {testimonials.map((testimonial, index) => (
+          {t.trust.testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}

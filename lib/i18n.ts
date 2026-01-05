@@ -1,0 +1,434 @@
+export type Locale = "sr" | "en" | "ru";
+
+export const locales: Locale[] = ["sr", "en", "ru"];
+export const defaultLocale: Locale = "sr";
+
+export const translations = {
+  sr: {
+    nav: {
+      home: "Početna",
+      technology: "Tehnologija",
+      portfolio: "Portfolio",
+      contact: "Kontakt",
+    },
+    hero: {
+      headline: "ARHITEKTONSKO ŠTAMPANJE ZIDOVA. IZVRŠAVA ROBOT.",
+      subheadline: "Trajno UV štampanje direktno u površinu.\nBez vinila. Bez nalepnica. Bez ručnog rada.",
+      cta: "ZAHTEVAJTE KONSULTACIJU PROJEKTA",
+      emailUs: "POŠALJITE EMAIL",
+      whatsapp: "WHATSAPP",
+      replyTime: "Odgovor u roku od 8 sati",
+      phone: "+381 60 503 0043",
+      microcopy: "Za arhitekte, dizajnere i komercijalne projekte.",
+    },
+    sections: {
+      supportedMaterials: "PODRŽANI MATERIJALI",
+      executionVerification: "VERIFIKACIJA IZVRŠENJA",
+      executionVerificationDesc: "Direktna primena na betonsku podlogu.",
+      trust: "POVERENJE",
+      selectedWork: "IZABRANI RADOVI",
+      operationalProcedure: "OPERACIONA PROCEDURA",
+      howItWorks: "Kako Funkcioniše",
+      systemCapabilities: "SISTEMSKI KAPACITETI",
+      technologyThatTransforms: "Tehnologija Koja Transformiše",
+      faq: "ČESTA PITANJA",
+      finalCta: {
+        title: "ZAHTEVAJTE KONSULTACIJU PROJEKTA",
+        emailUs: "POŠALJITE EMAIL",
+        whatsapp: "WHATSAPP",
+        replyTime: "Odgovor u roku od 8 sati",
+        phone: "+381 60 503 0043",
+        microcopy: "Za arhitekte, dizajnere i komercijalne projekte.",
+      },
+    },
+    materials: {
+      concrete: { name: "BETON", label: "MINERAL • POROZAN" },
+      brick: { name: "CIGLA", label: "MODULARNA • SPOJENA" },
+      wood: { name: "DRVO", label: "ORGANSKO • ŽILAVO" },
+      glass: { name: "STAKLO", label: "NEPOROZNO • REFLEKTUJUĆE" },
+    },
+    trust: {
+      completedProjects: "ZAVRŠENI PROJEKTI",
+      printedArea: "ŠTAMPANA POVRŠINA",
+      operationalSince: "U FUNKCIJI OD",
+      responseTime: "VREME ODGOVORA",
+      testimonials: [
+        {
+          quote: "Nula pripreme površine. Direktna primena na postojeći beton.",
+          author: "M.P.",
+          role: "Arhitekta",
+          location: "Beograd",
+        },
+        {
+          quote: "Trajna završna obrada nakon 18 meseci u komercijalnom prostoru sa velikim protokom.",
+          author: "D.K.",
+          role: "Vlasnik kafića",
+          location: "Novi Sad",
+        },
+      ],
+    },
+    portfolio: {
+      captions: [
+        "Enterijer kafića · 12 m² · 2h izvršenje",
+        "Predvorje kancelarije · beton · unutrašnje",
+        "Zid teretane · cigla · otporna završna obrada",
+        "Prodajni prostor · 28 m² · 4h izvršenje",
+        "Restoran · beton · spoljašnje",
+        "Hodnik hotela · cigla · 18 m²",
+      ],
+    },
+    howItWorks: {
+      steps: [
+        {
+          title: "Specifikacija Projekta",
+          description: "Dokumentuju se dimenzije zida, tip površine i zahtevi za umetničkim delom. Potvrđuju se tehnički parametri.",
+        },
+        {
+          title: "Raspoređivanje Opreme",
+          description: "Vertikalni štampač se transportuje na lokaciju i sastavlja. Izvodi se kalibracija mašine za specifičan materijal površine.",
+        },
+        {
+          title: "Izvršenje Štampanja",
+          description: "UV-otvrdnjiva boja se nanosi direktno na površinu. Trenutno otvrdnjavanje obezbeđuje trajno prianjanje i izdržljivost.",
+        },
+      ],
+    },
+    technology: {
+      features: [
+        {
+          title: "Ekološka Boja",
+          description: "Održive, netoksične UV-otvrdnjive boje koje štite i vaše zidove i životnu sredinu.",
+        },
+        {
+          title: "Vodootporno",
+          description: "UV-otvrdnuti otisci su otporni na vodu, vremenske uslove i habanje. Savršeno za unutrašnje i spoljašnje primene.",
+        },
+        {
+          title: "Bilo Koja Površina",
+          description: "Beton, cigla, metal, drvo—naša tehnologija se lepi na gotovo bilo koju vertikalnu površinu.",
+        },
+        {
+          title: "Do 4m Visine",
+          description: "Mogućnost vertikalnog štampanja do visine od 4 metra. Realizujte svoju viziju bez ograničenja.",
+        },
+      ],
+    },
+    faq: {
+      questions: [
+        "Da li će otisak izbledeti, odlepiti se ili propasti na otvorenom?",
+        "Koliko će otisak trajati i da li može biti oštećen čišćenjem ili habanjem?",
+        "Ko se bavi popravkama zida ili pripremnim radovima pre štampanja?",
+        "Postoji li minimalna veličina projekta ili će mali poslovi biti preskupi?",
+        "Koji format fajla i rezoluciju treba da obezbedim?",
+        "Koliko će ovo koštati i koji faktori utiču na cenu?",
+        "Koji uslovi zida ili situacije čine ovo neprikladnim?",
+        "Koliko vremena od odobrenja do završetka i da li može biti ubrzano?",
+      ],
+      answers: [
+        "UV-otvrdnjiva boja je trajna i otporna na vremenske uslove. Nema izbledevanja ili odlepljivanja pod normalnim uslovima. Spoljašnje primene zahtevaju stabilne, neporozne površine. Procenjujemo pogodnost površine tokom posete lokaciji.",
+        "Otisci su trajni i podnose standardno komercijalno čišćenje. Očekivani vek trajanja: 10+ godina unutra, 5–7 godina napolju (zavisi od izloženosti). Koristite blage deterdžente; izbegavajte abrazivne čistače na mat završnim obradama.",
+        "Procenjujemo stanje površine tokom posete lokaciji. Wallie se bavi manjim pripremama površine. Veće popravke (pukotine, vlaga, strukturni problemi) su odgovornost klijenta ili se koordiniraju sa vašim izvođačem. Pružamo jasnu obimu pre početka.",
+        "Nema striktnog minimuma. Projekti se kreću od 5–200 m². Manja područja (ispod 10 m²) koriste prilagođene cene zbog troškova postavljanja. Tipičan opseg: €80–150 po m². Finalna ponuda se daje nakon procene lokacije.",
+        "Vektorski fajlovi (AI, PDF) su poželjni. Visokorezolucijski raster (300+ DPI, minimum 2000px širine) je prihvatljiv. Pružamo vodič za šablone i možemo optimizovati fajlove ako je potrebno. Fajlovi niske rezolucije mogu rezultovati vidljivim pikselizovanjem.",
+        "Cena zavisi od površine, složenosti dizajna, tipa površine i lokacije. Tipičan opseg: €80–150 po m². Složeni dizajni, težak pristup ili posebna priprema površine mogu povećati cenu. Finalna ponuda se daje nakon procene lokacije—bez skrivenih troškova.",
+        "Nije prikladno za praškaste, ljušteće ili izuzetno neravne površine. Problemi sa vlagom moraju biti rešeni pre štampanja. Ne možemo štampati na površinama sa aktivnim oštećenjem od vode ili strukturnom nestabilnošću. Procenjujemo sve uslove tokom konsultacije i odbićemo ako je neprikladno.",
+        "Standardni vremenski okvir: 2–4 nedelje od odobrenog dizajna (zavisi od veličine projekta i rasporeda). Ubrzani narudžbe su moguće sa 30–50% nadoplatom i podložne dostupnosti. Pružamo procenu vremena tokom konsultacije.",
+      ],
+    },
+    footer: {
+      companyName: "CRUDERLY DOO BEОGRAD-ZEMUN",
+      contact: "KONTAKT",
+      follow: "PRATITE",
+      privacyPolicy: "Politika Privatnosti",
+      copyright: "© 2026 Cruderly doo Beograd-Zemun. Sva prava zadržana.",
+      operating: "Poslujemo iz Beograda. Projekti širom Evrope.",
+      whatsappViber: "WhatsApp / Viber",
+    },
+  },
+  en: {
+    nav: {
+      home: "Home",
+      technology: "Technology",
+      portfolio: "Portfolio",
+      contact: "Contact",
+    },
+    hero: {
+      headline: "ARCHITECTURAL WALL PRINTING. EXECUTED BY ROBOT.",
+      subheadline: "Permanent UV printing directly into the surface.\nNo vinyl. No decals. No manual work.",
+      cta: "REQUEST A PROJECT CONSULTATION",
+      emailUs: "EMAIL US",
+      whatsapp: "WHATSAPP",
+      replyTime: "Reply within 8 hours",
+      phone: "+381 60 503 0043",
+      microcopy: "For architects, designers, and commercial projects.",
+    },
+    sections: {
+      supportedMaterials: "SUPPORTED MATERIALS",
+      executionVerification: "EXECUTION VERIFICATION",
+      executionVerificationDesc: "Direct-to-surface application on concrete substrate.",
+      trust: "TRUST",
+      selectedWork: "SELECTED WORK",
+      operationalProcedure: "OPERATIONAL PROCEDURE",
+      howItWorks: "How It Works",
+      systemCapabilities: "SYSTEM CAPABILITIES",
+      technologyThatTransforms: "Technology That Transforms",
+      faq: "FAQ",
+      finalCta: {
+        title: "REQUEST A PROJECT CONSULTATION",
+        emailUs: "EMAIL US",
+        whatsapp: "WHATSAPP",
+        replyTime: "Reply within 8 hours",
+        phone: "+381 60 503 0043",
+        microcopy: "For architects, designers, and commercial projects.",
+      },
+    },
+    materials: {
+      concrete: { name: "CONCRETE", label: "MINERAL • POROUS" },
+      brick: { name: "BRICK", label: "MODULAR • JOINTED" },
+      wood: { name: "WOOD", label: "ORGANIC • GRAIN" },
+      glass: { name: "GLASS", label: "NON-POROUS • REFLECTIVE" },
+    },
+    trust: {
+      completedProjects: "COMPLETED PROJECTS",
+      printedArea: "PRINTED AREA",
+      operationalSince: "OPERATIONAL SINCE",
+      responseTime: "RESPONSE TIME",
+      testimonials: [
+        {
+          quote: "Zero surface prep required. Direct application on existing concrete.",
+          author: "M.P.",
+          role: "Architect",
+          location: "Belgrade",
+        },
+        {
+          quote: "Durable finish after 18 months in high-traffic commercial space.",
+          author: "D.K.",
+          role: "Café owner",
+          location: "Novi Sad",
+        },
+      ],
+    },
+    portfolio: {
+      captions: [
+        "Café interior · 12 m² · 2h execution",
+        "Office lobby · concrete · indoor",
+        "Gym wall · brick · washable finish",
+        "Retail space · 28 m² · 4h execution",
+        "Restaurant · concrete · outdoor",
+        "Hotel corridor · brick · 18 m²",
+      ],
+    },
+    howItWorks: {
+      steps: [
+        {
+          title: "Project Specification",
+          description: "Wall dimensions, surface type, and artwork requirements are documented. Technical parameters are confirmed.",
+        },
+        {
+          title: "Equipment Deployment",
+          description: "Vertical printer is transported to site and assembled. Machine calibration is performed for the specific surface material.",
+        },
+        {
+          title: "Print Execution",
+          description: "UV-curable ink is applied directly to the surface. Immediate curing ensures permanent adhesion and durability.",
+        },
+      ],
+    },
+    technology: {
+      features: [
+        {
+          title: "Eco-Friendly Ink",
+          description: "Sustainable, non-toxic UV-curable inks that protect both your walls and the environment.",
+        },
+        {
+          title: "Waterproof",
+          description: "UV-cured prints resist water, weather, and wear. Perfect for indoor and outdoor applications.",
+        },
+        {
+          title: "Any Surface",
+          description: "Concrete, brick, metal, wood—our technology adheres to virtually any vertical surface.",
+        },
+        {
+          title: "Up to 4m Height",
+          description: "Vertical printing capability reaching heights of 4 meters. Scale your vision without limits.",
+        },
+      ],
+    },
+    faq: {
+      questions: [
+        "Will the print fade, peel, or degrade outdoors?",
+        "How long will the print last, and can it be damaged by cleaning or wear?",
+        "Who handles wall repairs or preparation work before printing?",
+        "Is there a minimum project size, or will small jobs be too expensive?",
+        "What file format and resolution do I need to provide?",
+        "How much will this cost, and what factors affect pricing?",
+        "What wall conditions or situations make this unsuitable?",
+        "How long from approval to completion, and can it be rushed?",
+      ],
+      answers: [
+        "UV-cured ink is permanent and weather-resistant. No fading or peeling under normal conditions. Outdoor applications require stable, non-porous surfaces. We assess surface suitability during site visit.",
+        "Prints are permanent and withstand standard commercial cleaning. Expected lifespan: 10+ years indoors, 5–7 years outdoors (depending on exposure). Use mild detergents; avoid abrasive cleaners on matte finishes.",
+        "We assess surface condition during site visit. Wallie handles minor surface preparation. Major repairs (cracks, moisture, structural issues) are client responsibility or coordinated with your contractor. We provide clear scope before starting.",
+        "No strict minimum. Projects range from 5–200 m². Smaller areas (under 10 m²) use adjusted pricing due to setup costs. Typical range: €80–150 per m². Final quote provided after site assessment.",
+        "Vector files (AI, PDF) preferred. High-resolution raster (300+ DPI, minimum 2000px width) acceptable. We provide template guidance and can optimize files if needed. Low-resolution files may result in visible pixelation.",
+        "Pricing depends on area, design complexity, surface type, and location. Typical range: €80–150 per m². Complex designs, difficult access, or special surface prep may increase cost. Final quote provided after site assessment—no hidden fees.",
+        "Not suitable for powdery, flaking, or extremely uneven surfaces. Moisture issues must be resolved before printing. We cannot print on surfaces with active water damage or structural instability. We evaluate all conditions during consultation and will decline if unsuitable.",
+        "Standard timeline: 2–4 weeks from approved design (depends on project size and scheduling). Rush orders possible with 30–50% surcharge and subject to availability. We provide timeline estimate during consultation.",
+      ],
+    },
+    footer: {
+      companyName: "CRUDERLY DOO BEОGRAD-ZEMUN",
+      contact: "CONTACT",
+      follow: "FOLLOW",
+      privacyPolicy: "Privacy Policy",
+      copyright: "© 2026 Cruderly doo Beograd-Zemun. All rights reserved.",
+      operating: "Operating from Belgrade. Projects across Europe.",
+      whatsappViber: "WhatsApp / Viber",
+    },
+  },
+  ru: {
+    nav: {
+      home: "Главная",
+      technology: "Технология",
+      portfolio: "Портфолио",
+      contact: "Контакты",
+    },
+    hero: {
+      headline: "АРХИТЕКТУРНАЯ ПЕЧАТЬ НА СТЕНАХ. ВЫПОЛНЯЕТ РОБОТ.",
+      subheadline: "Постоянная УФ-печать непосредственно на поверхность.\nБез винила. Без наклеек. Без ручной работы.",
+      cta: "ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ ПО ПРОЕКТУ",
+      emailUs: "НАПИСАТЬ НАМ",
+      whatsapp: "WHATSAPP",
+      replyTime: "Ответ в течение 8 часов",
+      phone: "+381 60 503 0043",
+      microcopy: "Для архитекторов, дизайнеров и коммерческих проектов.",
+    },
+    sections: {
+      supportedMaterials: "ПОДДЕРЖИВАЕМЫЕ МАТЕРИАЛЫ",
+      executionVerification: "ПРОВЕРКА ВЫПОЛНЕНИЯ",
+      executionVerificationDesc: "Прямое нанесение на бетонную основу.",
+      trust: "ДОВЕРИЕ",
+      selectedWork: "ВЫБРАННЫЕ РАБОТЫ",
+      operationalProcedure: "ОПЕРАЦИОННАЯ ПРОЦЕДУРА",
+      howItWorks: "Как Это Работает",
+      systemCapabilities: "ВОЗМОЖНОСТИ СИСТЕМЫ",
+      technologyThatTransforms: "Технология, Которая Преобразует",
+      faq: "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ",
+      finalCta: {
+        title: "ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ ПО ПРОЕКТУ",
+        emailUs: "НАПИСАТЬ НАМ",
+        whatsapp: "WHATSAPP",
+        replyTime: "Ответ в течение 8 часов",
+        phone: "+381 60 503 0043",
+        microcopy: "Для архитекторов, дизайнеров и коммерческих проектов.",
+      },
+    },
+    materials: {
+      concrete: { name: "БЕТОН", label: "МИНЕРАЛ • ПОРИСТЫЙ" },
+      brick: { name: "КИРПИЧ", label: "МОДУЛЬНЫЙ • СОЕДИНЕННЫЙ" },
+      wood: { name: "ДЕРЕВО", label: "ОРГАНИЧЕСКИЙ • ЗЕРНИСТЫЙ" },
+      glass: { name: "СТЕКЛО", label: "НЕПОРИСТЫЙ • ОТРАЖАЮЩИЙ" },
+    },
+    trust: {
+      completedProjects: "ЗАВЕРШЕННЫЕ ПРОЕКТЫ",
+      printedArea: "НАПЕЧАТАННАЯ ПЛОЩАДЬ",
+      operationalSince: "РАБОТАЕМ С",
+      responseTime: "ВРЕМЯ ОТВЕТА",
+      testimonials: [
+        {
+          quote: "Нулевая подготовка поверхности. Прямое нанесение на существующий бетон.",
+          author: "М.П.",
+          role: "Архитектор",
+          location: "Белград",
+        },
+        {
+          quote: "Прочное покрытие после 18 месяцев в коммерческом помещении с высокой проходимостью.",
+          author: "Д.К.",
+          role: "Владелец кафе",
+          location: "Нови-Сад",
+        },
+      ],
+    },
+    portfolio: {
+      captions: [
+        "Интерьер кафе · 12 м² · выполнение за 2ч",
+        "Вестибюль офиса · бетон · внутреннее",
+        "Стена спортзала · кирпич · моющееся покрытие",
+        "Торговое пространство · 28 м² · выполнение за 4ч",
+        "Ресторан · бетон · наружное",
+        "Коридор отеля · кирпич · 18 м²",
+      ],
+    },
+    howItWorks: {
+      steps: [
+        {
+          title: "Спецификация Проекта",
+          description: "Документируются размеры стены, тип поверхности и требования к художественному оформлению. Подтверждаются технические параметры.",
+        },
+        {
+          title: "Развертывание Оборудования",
+          description: "Вертикальный принтер транспортируется на объект и собирается. Выполняется калибровка машины для конкретного материала поверхности.",
+        },
+        {
+          title: "Выполнение Печати",
+          description: "УФ-отверждаемые чернила наносятся непосредственно на поверхность. Мгновенное отверждение обеспечивает постоянное сцепление и долговечность.",
+        },
+      ],
+    },
+    technology: {
+      features: [
+        {
+          title: "Экологичные Чернила",
+          description: "Устойчивые, нетоксичные УФ-отверждаемые чернила, которые защищают и ваши стены, и окружающую среду.",
+        },
+        {
+          title: "Водостойкость",
+          description: "УФ-отвержденные отпечатки устойчивы к воде, погодным условиям и износу. Идеально для внутреннего и наружного применения.",
+        },
+        {
+          title: "Любая Поверхность",
+          description: "Бетон, кирпич, металл, дерево—наша технология прилипает практически к любой вертикальной поверхности.",
+        },
+        {
+          title: "До 4м Высоты",
+          description: "Возможность вертикальной печати до высоты 4 метра. Масштабируйте свое видение без ограничений.",
+        },
+      ],
+    },
+    faq: {
+      questions: [
+        "Поблекнет ли, отслоится или испортится отпечаток на открытом воздухе?",
+        "Как долго будет длиться отпечаток и может ли он быть поврежден очисткой или износом?",
+        "Кто занимается ремонтом стены или подготовительными работами перед печатью?",
+        "Есть ли минимальный размер проекта, или небольшие работы будут слишком дорогими?",
+        "Какой формат файла и разрешение мне нужно предоставить?",
+        "Сколько это будет стоить и какие факторы влияют на цену?",
+        "Какие условия стены или ситуации делают это непригодным?",
+        "Сколько времени от одобрения до завершения и можно ли ускорить?",
+      ],
+      answers: [
+        "УФ-отверждаемые чернила постоянны и устойчивы к погодным условиям. Нет выцветания или отслоения в нормальных условиях. Наружное применение требует стабильных, непористых поверхностей. Мы оцениваем пригодность поверхности во время посещения объекта.",
+        "Отпечатки постоянны и выдерживают стандартную коммерческую очистку. Ожидаемый срок службы: 10+ лет в помещении, 5–7 лет на открытом воздухе (в зависимости от воздействия). Используйте мягкие моющие средства; избегайте абразивных чистящих средств на матовых покрытиях.",
+        "Мы оцениваем состояние поверхности во время посещения объекта. Wallie занимается мелкой подготовкой поверхности. Крупный ремонт (трещины, влага, структурные проблемы) является ответственностью клиента или координируется с вашим подрядчиком. Мы предоставляем четкий объем работ перед началом.",
+        "Нет строгого минимума. Проекты варьируются от 5–200 м². Меньшие площади (менее 10 м²) используют скорректированные цены из-за затрат на установку. Типичный диапазон: €80–150 за м². Окончательное предложение предоставляется после оценки объекта.",
+        "Предпочтительны векторные файлы (AI, PDF). Приемлемо высокое разрешение растрового изображения (300+ DPI, минимум 2000px ширины). Мы предоставляем руководство по шаблонам и можем оптимизировать файлы при необходимости. Файлы с низким разрешением могут привести к видимой пикселизации.",
+        "Цена зависит от площади, сложности дизайна, типа поверхности и местоположения. Типичный диапазон: €80–150 за м². Сложные дизайны, трудный доступ или специальная подготовка поверхности могут увеличить стоимость. Окончательное предложение предоставляется после оценки объекта—без скрытых сборов.",
+        "Не подходит для порошкообразных, отслаивающихся или крайне неровных поверхностей. Проблемы с влажностью должны быть решены перед печатью. Мы не можем печатать на поверхностях с активным повреждением водой или структурной нестабильностью. Мы оцениваем все условия во время консультации и откажем, если непригодно.",
+        "Стандартный срок: 2–4 недели с одобренного дизайна (зависит от размера проекта и расписания). Срочные заказы возможны с надбавкой 30–50% и в зависимости от доступности. Мы предоставляем оценку времени во время консультации.",
+      ],
+    },
+    footer: {
+      companyName: "CRUDERLY DOO BEОGRAD-ZEMUN",
+      contact: "КОНТАКТЫ",
+      follow: "СЛЕДИТЬ",
+      privacyPolicy: "Политика Конфиденциальности",
+      copyright: "© 2026 Cruderly doo Beograd-Zemun. Все права защищены.",
+      operating: "Работаем из Белграда. Проекты по всей Европе.",
+      whatsappViber: "WhatsApp / Viber",
+    },
+  },
+} as const;
+
+export function getTranslations(locale: Locale) {
+  return translations[locale];
+}

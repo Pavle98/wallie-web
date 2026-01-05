@@ -2,35 +2,18 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { getTranslations, type Locale } from "@/lib/i18n";
 
-const projects = [
-  {
-    image: "/textures/concrete.png",
-    caption: "Café interior · 12 m² · 2h execution",
-  },
-  {
-    image: "/textures/brick.png",
-    caption: "Office lobby · concrete · indoor",
-  },
-  {
-    image: "/textures/wood.png",
-    caption: "Gym wall · brick · washable finish",
-  },
-  {
-    image: "/textures/glass.png",
-    caption: "Retail space · 28 m² · 4h execution",
-  },
-  {
-    image: "/textures/concrete.png",
-    caption: "Restaurant · concrete · outdoor",
-  },
-  {
-    image: "/textures/brick.png",
-    caption: "Hotel corridor · brick · 18 m²",
-  },
-];
-
-export default function PortfolioGrid() {
+export default function PortfolioGrid({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  
+  const projects = t.portfolio.captions.map((caption, index) => {
+    const textures = ["/textures/concrete.png", "/textures/brick.png", "/textures/wood.png", "/textures/glass.png"];
+    return {
+      image: textures[index % textures.length],
+      caption,
+    };
+  });
   return (
     <section className="bg-[#0a0a0a] py-16 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
@@ -41,7 +24,7 @@ export default function PortfolioGrid() {
           transition={{ duration: 0.4 }}
           className="mb-8 text-sm font-mono uppercase tracking-wider text-zinc-400"
         >
-          SELECTED WORK
+          {t.sections.selectedWork}
         </motion.h2>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">

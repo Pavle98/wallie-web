@@ -2,21 +2,17 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { getTranslations, type Locale } from "@/lib/i18n";
 
-interface SurfaceData {
-  name: string;
-  texture: string;
-  label: string;
-}
-
-const surfaces: SurfaceData[] = [
-  { name: "CONCRETE", texture: "/textures/concrete.png", label: "MINERAL • POROUS" },
-  { name: "BRICK", texture: "/textures/brick.png", label: "MODULAR • JOINTED" },
-  { name: "WOOD", texture: "/textures/wood.png", label: "ORGANIC • GRAIN" },
-  { name: "GLASS", texture: "/textures/glass.png", label: "NON-POROUS • REFLECTIVE" },
-];
-
-export default function SurfaceExplorer() {
+export default function SurfaceExplorer({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  
+  const surfaces = [
+    { name: t.materials.concrete.name, texture: "/textures/concrete.png", label: t.materials.concrete.label },
+    { name: t.materials.brick.name, texture: "/textures/brick.png", label: t.materials.brick.label },
+    { name: t.materials.wood.name, texture: "/textures/wood.png", label: t.materials.wood.label },
+    { name: t.materials.glass.name, texture: "/textures/glass.png", label: t.materials.glass.label },
+  ];
   return (
     <section className="relative bg-[#0B0D10] py-12 px-4 md:px-8">
       <div className="mx-auto max-w-7xl">
@@ -27,7 +23,7 @@ export default function SurfaceExplorer() {
           transition={{ duration: 0.35 }}
         >
           <h2 className="mb-6 text-sm font-mono uppercase tracking-wider text-zinc-400">
-            SUPPORTED MATERIALS
+            {t.sections.supportedMaterials}
           </h2>
 
           <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">

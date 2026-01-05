@@ -2,26 +2,16 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { getTranslations, type Locale } from "@/lib/i18n";
 
-const steps = [
-  {
-    number: "01",
-    title: "Project Specification",
-    description: "Wall dimensions, surface type, and artwork requirements are documented. Technical parameters are confirmed.",
-  },
-  {
-    number: "02",
-    title: "Equipment Deployment",
-    description: "Vertical printer is transported to site and assembled. Machine calibration is performed for the specific surface material.",
-  },
-  {
-    number: "03",
-    title: "Print Execution",
-    description: "UV-curable ink is applied directly to the surface. Immediate curing ensures permanent adhesion and durability.",
-  },
-];
-
-export default function HowItWorks() {
+export default function HowItWorks({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  
+  const steps = t.howItWorks.steps.map((step, index) => ({
+    number: String(index + 1).padStart(2, "0"),
+    title: step.title,
+    description: step.description,
+  }));
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -67,7 +57,7 @@ export default function HowItWorks() {
             transition={{ duration: 0.6 }}
             className="mb-2 text-sm font-mono uppercase tracking-wider text-zinc-400"
           >
-            OPERATIONAL PROCEDURE
+            {t.sections.operationalProcedure}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -76,7 +66,7 @@ export default function HowItWorks() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl font-bold uppercase tracking-tighter text-[#ededed] sm:text-5xl md:text-6xl"
           >
-            How It Works
+            {t.sections.howItWorks}
           </motion.p>
         </div>
 

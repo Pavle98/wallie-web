@@ -2,33 +2,37 @@
 
 import { motion } from "framer-motion";
 import { Droplets, Shield, Layers, Maximize2 } from "lucide-react";
+import { getTranslations, type Locale } from "@/lib/i18n";
 
-const features = [
-  {
-    icon: Droplets,
-    title: "Eco-Friendly Ink",
-    description: "Sustainable, non-toxic UV-curable inks that protect both your walls and the environment.",
-    color: "from-[#39FF14] to-[#39FF14]/50",
-  },
-  {
-    icon: Shield,
-    title: "Waterproof",
-    description: "UV-cured prints resist water, weather, and wear. Perfect for indoor and outdoor applications.",
-    color: "from-[#8A2BE2] to-[#8A2BE2]/50",
-  },
-  {
-    icon: Layers,
-    title: "Any Surface",
-    description: "Concrete, brick, metal, wood—our technology adheres to virtually any vertical surface.",
-    color: "from-[#39FF14] to-[#8A2BE2]",
-  },
-  {
-    icon: Maximize2,
-    title: "Up to 4m Height",
-    description: "Vertical printing capability reaching heights of 4 meters. Scale your vision without limits.",
-    color: "from-[#8A2BE2] to-[#39FF14]",
-  },
-];
+export default function BentoGrid({ locale }: { locale: Locale }) {
+  const t = getTranslations(locale);
+  
+  const features = [
+    {
+      icon: Droplets,
+      title: t.technology.features[0].title,
+      description: t.technology.features[0].description,
+      color: "from-[#39FF14] to-[#39FF14]/50",
+    },
+    {
+      icon: Shield,
+      title: t.technology.features[1].title,
+      description: t.technology.features[1].description,
+      color: "from-[#8A2BE2] to-[#8A2BE2]/50",
+    },
+    {
+      icon: Layers,
+      title: t.technology.features[2].title,
+      description: t.technology.features[2].description,
+      color: "from-[#39FF14] to-[#8A2BE2]",
+    },
+    {
+      icon: Maximize2,
+      title: t.technology.features[3].title,
+      description: t.technology.features[3].description,
+      color: "from-[#8A2BE2] to-[#39FF14]",
+    },
+  ];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -52,7 +56,6 @@ const itemVariants = {
   },
 };
 
-export default function BentoGrid() {
   return (
     <section className="bg-[#0a0a0a] py-24 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
@@ -65,7 +68,7 @@ export default function BentoGrid() {
             transition={{ duration: 0.6 }}
             className="mb-2 text-sm font-mono uppercase tracking-wider text-zinc-400"
           >
-            SYSTEM CAPABILITIES
+            {t.sections.systemCapabilities}
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -74,7 +77,7 @@ export default function BentoGrid() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl font-bold uppercase tracking-tighter text-[#ededed] sm:text-5xl md:text-6xl"
           >
-            Technology That Transforms
+            {t.sections.technologyThatTransforms}
           </motion.p>
         </div>
 
