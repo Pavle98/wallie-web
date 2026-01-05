@@ -54,17 +54,39 @@ export default function Hero() {
             No vinyl. No decals. No manual work.
           </motion.p>
 
-          {/* Button */}
+          {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col gap-2"
+            className="flex flex-col gap-3"
           >
             <button className="group inline-flex items-center gap-3 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200">
               <span>REQUEST A PROJECT CONSULTATION</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
+              <a
+                href="mailto:contact@wallie.com"
+                className="text-sm font-mono uppercase tracking-wider text-white/80 underline underline-offset-4 transition-colors hover:text-white"
+              >
+                EMAIL US
+              </a>
+              <span className="hidden text-zinc-600 sm:inline">·</span>
+              <a
+                href="https://wa.me/381605030043"
+                className="text-sm font-mono uppercase tracking-wider text-white/80 underline underline-offset-4 transition-colors hover:text-white"
+              >
+                WHATSAPP
+              </a>
+              <span className="hidden text-zinc-600 sm:inline">·</span>
+              <p className="text-xs text-white/50">
+                Reply within 8 hours
+              </p>
+            </div>
+            <p className="text-xs text-white/50">
+              +381 60 503 0043
+            </p>
             <p className="text-sm text-white/60">
               For architects, designers, and commercial projects.
             </p>
