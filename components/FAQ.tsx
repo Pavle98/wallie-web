@@ -14,7 +14,7 @@ export default function FAQ({ locale }: { locale: Locale }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-[#0a0a0a] py-16 px-4">
+    <section className="bg-[#0a0b0a] py-16 px-4">
       <div className="mx-auto max-w-4xl px-6 md:px-12">
         <motion.h2
           initial={{ opacity: 0 }}

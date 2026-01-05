@@ -57,7 +57,7 @@ const itemVariants = {
 };
 
   return (
-    <section className="bg-[#0a0a0a] py-24 px-4">
+    <section className="bg-[#0a0b0a] py-24 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* Section Intro */}
         <div className="mb-16">
@@ -96,7 +96,7 @@ const itemVariants = {
               <motion.div
                 key={feature.title}
                 variants={itemVariants}
-                className={`group relative overflow-hidden rounded-sm border border-[#ededed]/10 bg-[#0a0a0a] p-8 transition-all duration-300 hover:border-[#ededed]/20 hover:shadow-[0_0_30px_rgba(57,255,20,0.1)] ${
+                className={`group relative overflow-hidden rounded-sm border border-[#ededed]/10 bg-[#0a0b0a] p-8 transition-all duration-300 hover:border-[#ededed]/20 hover:shadow-[0_0_30px_rgba(57,255,20,0.1)] ${
                   isLarge ? "sm:col-span-2" : ""
                 }`}
               >
@@ -108,7 +108,7 @@ const itemVariants = {
                 {/* Icon */}
                 <div className="relative mb-6">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#39FF14]/20 to-[#8A2BE2]/20 blur-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="relative rounded-sm border border-[#ededed]/10 bg-[#0a0a0a] p-4 transition-all duration-300 group-hover:border-[#39FF14]/30">
+                  <div className="relative rounded-sm border border-[#ededed]/10 bg-[#0a0b0a] p-4 transition-all duration-300 group-hover:border-[#39FF14]/30">
                     <Icon className="h-8 w-8 text-[#ededed] transition-colors duration-300 group-hover:text-[#39FF14]" />
                   </div>
                 </div>

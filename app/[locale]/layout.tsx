@@ -1,5 +1,5 @@
-import { locales, type Locale } from "@/lib/i18n";
-import { notFound } from "next/navigation";
+import { locales, type Locale, defaultLocale } from "@/lib/i18n";
+import { redirect } from "next/navigation";
 import { Inter } from "next/font/google";
 import "../globals.css";
 
@@ -17,14 +17,18 @@ export default async function LocaleLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: Locale }> | { locale: Locale };
+  params: Promise<{ locale: string }>;
 }) {
-  const resolvedParams = await Promise.resolve(params);
-  const { locale } = resolvedParams;
+  const { locale } = await params;
 
-  if (!locales.includes(locale)) {
-    notFound();
+  // Validate locale at runtime - redirect invalid locales to default locale
+  // This preserves the middleware behavior of redirecting paths without valid locale
+  if (!locales.includes(locale as Locale)) {
+    redirect(`/${defaultLocale}`);
   }
+
+  // Cast to Locale after validation
+  const validLocale = locale as Locale;
 
   const langMap: Record<Locale, string> = {
     sr: "sr",
@@ -33,7 +37,7 @@ export default async function LocaleLayout({
   };
 
   return (
-    <html lang={langMap[locale]} suppressHydrationWarning>
+    <html lang={langMap[validLocale]} suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );

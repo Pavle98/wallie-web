@@ -13,7 +13,7 @@ export default function TrustStack({ locale }: { locale: Locale }) {
     { label: t.trust.responseTime, value: "< 8h" },
   ];
   return (
-    <section className="bg-[#0a0a0a] py-16 px-4">
+    <section className="bg-[#0a0b0a] py-16 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <motion.h2
           initial={{ opacity: 0 }}

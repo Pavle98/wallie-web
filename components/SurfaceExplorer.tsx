@@ -14,7 +14,7 @@ export default function SurfaceExplorer({ locale }: { locale: Locale }) {
     { name: t.materials.glass.name, texture: "/textures/glass.png", label: t.materials.glass.label },
   ];
   return (
-    <section className="relative bg-[#0B0D10] py-12 px-4 md:px-8">
+    <section className="relative bg-[#0a0b0a] py-12 px-4 md:px-8">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}

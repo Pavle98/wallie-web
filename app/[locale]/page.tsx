@@ -9,7 +9,7 @@ import BentoGrid from "@/components/BentoGrid";
 import FAQ from "@/components/FAQ";
 import { ArrowRight, Instagram, Linkedin } from "lucide-react";
 import { getTranslations, type Locale, locales, defaultLocale } from "@/lib/i18n";
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import type { Metadata } from "next";
 
 export function generateStaticParams() {
@@ -19,11 +19,18 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ locale: Locale }> | { locale: Locale };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const resolvedParams = await Promise.resolve(params);
-  const { locale } = resolvedParams;
-  const t = getTranslations(locale);
+  const { locale } = await params;
+
+  // Validate locale at runtime - redirect invalid locales to default locale
+  if (!locales.includes(locale as Locale)) {
+    redirect(`/${defaultLocale}`);
+  }
+
+  // Cast to Locale after validation
+  const validLocale = locale as Locale;
+  const t = getTranslations(validLocale);
 
   const langMap: Record<Locale, string> = {
     sr: "sr",
@@ -34,18 +41,18 @@ export async function generateMetadata({
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://wallie.com";
 
   return {
-    title: locale === "sr" 
+    title: validLocale === "sr" 
       ? "Wallie - Vertikalno Štampanje Zidova | Beograd, Srbija"
-      : locale === "en"
+      : validLocale === "en"
       ? "Wallie - Vertical Wall Printing | Belgrade, Serbia"
       : "Wallie - Вертикальная Печать на Стенах | Белград, Сербия",
-    description: locale === "sr"
+    description: validLocale === "sr"
       ? "Tehnologija direktnog vertikalnog štampanja na zidove u Beogradu. Transformišite bilo koju površinu UV-otvrdnjivom bojom. Do 4m visine. Vodootporno. Ekološki prihvatljivo."
-      : locale === "en"
+      : validLocale === "en"
       ? "Direct-to-wall vertical printing technology in Belgrade. Transform any surface with UV-curable ink. Up to 4m height. Waterproof. Eco-friendly."
       : "Технология прямой вертикальной печати на стены в Белграде. Преобразуйте любую поверхность УФ-отверждаемыми чернилами. До 4м высоты. Водостойкость. Экологично.",
     alternates: {
-      canonical: `${baseUrl}/${locale}`,
+      canonical: `${baseUrl}/${validLocale}`,
       languages: {
         "sr": `${baseUrl}/sr`,
         "en": `${baseUrl}/en`,
@@ -59,31 +66,33 @@ export async function generateMetadata({
 export default async function HomePage({ 
   params 
 }: { 
-  params: Promise<{ locale: Locale }> | { locale: Locale };
+  params: Promise<{ locale: string }>;
 }) {
-  const resolvedParams = await Promise.resolve(params);
-  const { locale } = resolvedParams;
+  const { locale } = await params;
   
-  if (!locales.includes(locale)) {
-    notFound();
+  // Validate locale at runtime - redirect invalid locales to default locale
+  if (!locales.includes(locale as Locale)) {
+    redirect(`/${defaultLocale}`);
   }
 
-  const t = getTranslations(locale);
+  // Cast to Locale after validation
+  const validLocale = locale as Locale;
+  const t = getTranslations(validLocale);
 
   return (
-    <main className="min-h-screen bg-[#0a0a0a]">
-      <Navbar locale={locale} />
-      <Hero locale={locale} />
-      <SurfaceExplorer locale={locale} />
-      <PrinterRevealSlider locale={locale} />
-      <TrustStack locale={locale} />
-      <PortfolioGrid locale={locale} />
-      <HowItWorks locale={locale} />
-      <BentoGrid locale={locale} />
-      <FAQ locale={locale} />
+    <main className="min-h-screen bg-[#0a0b0a]">
+      <Navbar locale={validLocale} />
+      <Hero locale={validLocale} />
+      <SurfaceExplorer locale={validLocale} />
+      <PrinterRevealSlider locale={validLocale} />
+      <TrustStack locale={validLocale} />
+      <PortfolioGrid locale={validLocale} />
+      <HowItWorks locale={validLocale} />
+      <BentoGrid locale={validLocale} />
+      <FAQ locale={validLocale} />
       
       {/* Final CTA */}
-      <section className="bg-[#0a0a0a] py-24 px-4">
+      <section className="bg-[#0a0b0a] py-24 px-4">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="flex flex-col items-center gap-4">
             <button className="group inline-flex items-center gap-3 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200">
@@ -119,7 +128,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      <footer className="border-t border-[#ededed]/10 bg-[#0a0a0a] py-12 px-4">
+      <footer className="border-t border-[#ededed]/10 bg-[#0a0b0a] py-12 px-4">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* Company Info */}
@@ -204,7 +213,7 @@ export default async function HomePage({
               </div>
               <div className="text-xs text-[#ededed]/60">
                 <a
-                  href={`/${locale}/privacy`}
+                  href={`/${validLocale}/privacy`}
                   className="transition-colors hover:text-white"
                 >
                   {t.footer.privacyPolicy}
