@@ -51,6 +51,27 @@ export default function TechnicalTrust({ locale }: { locale: Locale }) {
             {t.sections.technicalTrust.executionConstraints.value}
           </div>
         </motion.div>
+
+        {/* Limitations */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.2 }}
+          className="mt-8 border-t border-zinc-800 pt-6"
+        >
+          <h3 className="mb-4 text-xs font-mono uppercase tracking-wider text-zinc-400">
+            {t.sections.technicalTrust.limitations?.title || "LIMITATIONS"}
+          </h3>
+          <div className="space-y-2 text-sm text-zinc-500 leading-relaxed">
+            {t.sections.technicalTrust.limitations?.items?.map((item: string, index: number) => (
+              <div key={index} className="flex items-start gap-2">
+                <span className="text-zinc-600">•</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );

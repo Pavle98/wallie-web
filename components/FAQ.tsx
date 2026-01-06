@@ -11,7 +11,8 @@ export default function FAQ({ locale }: { locale: Locale }) {
     question,
     answer: t.faq.answers[index],
   }));
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  // Open critical FAQ items by default: durability (0, 1), pricing (5)
+  const [openIndexes, setOpenIndexes] = useState<Set<number>>(new Set([0, 1, 5]));
 
   return (
     <section className="bg-[#0a0c0a] py-16 px-4">
@@ -37,17 +38,25 @@ export default function FAQ({ locale }: { locale: Locale }) {
               className="border-b border-zinc-800 pb-4"
             >
               <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                onClick={() => {
+                  const newIndexes = new Set(openIndexes);
+                  if (newIndexes.has(index)) {
+                    newIndexes.delete(index);
+                  } else {
+                    newIndexes.add(index);
+                  }
+                  setOpenIndexes(newIndexes);
+                }}
                 className="flex w-full items-start justify-between gap-4 py-2 text-left transition-colors hover:text-white/90"
               >
                 <h3 className="text-sm font-medium uppercase tracking-wide text-white">
                   {faq.question}
                 </h3>
                 <span className="flex-shrink-0 text-zinc-500 text-lg">
-                  {openIndex === index ? "−" : "+"}
+                  {openIndexes.has(index) ? "−" : "+"}
                 </span>
               </button>
-              {openIndex === index && (
+              {openIndexes.has(index) && (
                 <p className="mt-3 px-0 text-sm leading-relaxed text-zinc-400 sm:px-0">
                   {faq.answer}
                 </p>

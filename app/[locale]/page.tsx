@@ -8,6 +8,7 @@ import HowItWorks from "@/components/HowItWorks";
 import BentoGrid from "@/components/BentoGrid";
 import TechnicalTrust from "@/components/TechnicalTrust";
 import FAQ from "@/components/FAQ";
+import CollaborationProcess from "@/components/CollaborationProcess";
 import FinalCTA from "@/components/FinalCTA";
 import { Instagram, Linkedin } from "lucide-react";
 import { getTranslations, type Locale, locales, defaultLocale } from "@/lib/i18n";
@@ -91,6 +92,7 @@ export default async function HomePage({
       <TrustStack locale={validLocale} />
       <HowItWorks locale={validLocale} />
       <BentoGrid locale={validLocale} />
+      <CollaborationProcess locale={validLocale} />
       <TechnicalTrust locale={validLocale} />
       <FAQ locale={validLocale} />
       <FinalCTA locale={validLocale} />

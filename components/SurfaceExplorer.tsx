@@ -11,10 +11,10 @@ export default function SurfaceExplorer({ locale }: { locale: Locale }) {
   
   // Merged: 4 best examples showing materials + applications
   const items = [
-    { name: t.materials.concrete.name, image: "/textures/concrete.png", label: t.materials.concrete.application },
-    { name: t.materials.brick.name, image: "/examples/wall-printing-brick-facade-outdoor.jpg", label: t.materials.brick.application },
-    { name: t.materials.wood.name, image: "/examples/wall-printing-wood-panel.jpg", label: t.materials.wood.application },
-    { name: t.materials.glass.name, image: "/examples/wall-printing-glass-uv.jpg", label: t.materials.glass.application },
+    { name: t.materials.concrete.name, image: "/textures/concrete.png", label: t.materials.concrete.application, notes: t.materials.concrete.notes },
+    { name: t.materials.brick.name, image: "/examples/wall-printing-brick-facade-outdoor.jpg", label: t.materials.brick.application, notes: t.materials.brick.notes },
+    { name: t.materials.wood.name, image: "/examples/wall-printing-wood-panel.jpg", label: t.materials.wood.application, notes: t.materials.wood.notes },
+    { name: t.materials.glass.name, image: "/examples/wall-printing-glass-uv.jpg", label: t.materials.glass.application, notes: t.materials.glass.notes },
   ];
   
   return (
@@ -54,9 +54,14 @@ export default function SurfaceExplorer({ locale }: { locale: Locale }) {
                   <h3 className="mb-0.5 text-xs font-mono uppercase tracking-wide text-zinc-300">
                     {item.name}
                   </h3>
-                  <p className="text-[10px] font-mono text-zinc-500">
+                  <p className="mb-2 text-[10px] font-mono text-zinc-500">
                     {item.label}
                   </p>
+                  {item.notes && (
+                    <p className="text-[9px] font-mono leading-tight text-zinc-600">
+                      {item.notes}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}

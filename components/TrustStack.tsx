@@ -45,6 +45,24 @@ export default function TrustStack({ locale }: { locale: Locale }) {
           ))}
         </div>
 
+        {/* Context */}
+        {t.trust.context && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="mb-8 border-t border-zinc-800 pt-8"
+          >
+            <div className="grid gap-4 text-xs font-mono text-zinc-500 md:grid-cols-2">
+              <div>{t.trust.context.oldestWork}</div>
+              <div>{t.trust.context.indoorOutdoor}</div>
+              <div>{t.trust.context.cleaning}</div>
+              <div>{t.trust.context.degradation}</div>
+            </div>
+          </motion.div>
+        )}
+
         {/* Testimonials */}
         <div className="grid gap-6 md:grid-cols-2">
           {t.trust.testimonials.map((testimonial, index) => (

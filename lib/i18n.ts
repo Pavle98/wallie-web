@@ -12,9 +12,9 @@ export const translations = {
       contact: "Kontakt",
     },
     hero: {
-      headline: "ARHITEKTONSKO ŠTAMPANJE ZIDOVA. IZVRŠAVA ROBOT.",
-      subheadline: "Trajno UV štampanje direktno u površinu.\nBez vinila. Bez nalepnica. Bez ručnog rada.",
-      cta: "ZAHTEVAJTE KONSULTACIJU PROJEKTA",
+      headline: "TRAJNA ARHITEKTONSKA GRAFIKA. BEZ VINILA. BEZ REMONTA.",
+      subheadline: "Permanentno UV štampanje direktno u površinu.\nZid spreman za upotrebu odmah. Izvršava robotski sistem.",
+      cta: "PROVERITE DA LI JE VAŠ ZID POGODAN",
       emailUs: "EMAIL",
       whatsapp: "WHATSAPP",
       replyTime: "Odgovor u roku od 8 sati (radni dani)",
@@ -47,6 +47,16 @@ export const translations = {
         maintenance: { label: "Održavanje", value: "Standardno pranje, bez posebnih zahteva. Trajno prianjanje UV boje." },
         durability: { label: "Izdržljivost", value: "Trajno prianjanje na površinu. Otporno na vremenske uslove i standardno pranje." },
         executionConstraints: { label: "Ograničenja izvršenja", value: "Vertikalno: 4m+. Horizontalno: bez ograničenja. Zahteva pristup mašine površini." },
+        limitations: {
+          title: "OGRANIČENJA I ONO ŠTO NE RADIMO",
+          items: [
+            "Ne dizajniramo grafičke elemente—samo izvršavamo postojeće fajlove.",
+            "Ne štampamo na tekstilnim, fleksibilnim ili nestabilnim površinama.",
+            "Ne garantujemo rezultate na površinama sa aktivnom vlagom ili strukturnim problemima.",
+            "Ne radimo projekte ispod 5 m² bez posebne koordinacije.",
+            "Ne koristimo vinil, nalepnice ili privremene rešenja—samo trajno UV štampanje.",
+          ],
+        },
       },
       finalCta: {
         title: "ZAHTEVAJTE KONSULTACIJU PROJEKTA",
@@ -57,7 +67,7 @@ export const translations = {
         microcopy: "Za arhitekte, dizajnere i komercijalne projekte.",
       },
       ctaModal: {
-        title: "ZAHTEVAJTE KONSULTACIJU PROJEKTA",
+        title: "PROVERITE DA LI JE VAŠ ZID POGODAN",
         spaceType: "Tip prostora",
         surfaceType: "Tip površine",
         size: "Približna veličina",
@@ -69,18 +79,65 @@ export const translations = {
         submit: "POŠALJI",
         promise: "Izvodljivost, gruba cena i vremenski okvir u roku od 8 radnih sati.",
       },
+      collaborationProcess: {
+        title: "Kako saradnja funkcioniše (u praksi)",
+        steps: [
+          {
+            title: "Prvi kontakt",
+            description: "Dostavljate osnovne informacije: tip prostora, površina zida, približne dimenzije. Odgovoramo u roku od 8 sati sa preliminarnom procenom.",
+          },
+          {
+            title: "Tehnička provera zida",
+            description: "Poseta lokaciji ili slanje fotografija. Procenjujemo stabilnost površine, vlagu, strukturalne probleme. Jasno definišemo šta je potrebno pre štampanja.",
+          },
+          {
+            title: "Izvršenje na lokaciji",
+            description: "Transport opreme, postavljanje, kalibracija za specifičan materijal. Štampanje direktno na površinu. Zid spreman za upotrebu nakon završetka.",
+          },
+          {
+            title: "Finalna isporuka",
+            description: "Provera kvaliteta, dokumentacija, uputstva za održavanje. Zid je spreman za upotrebu. Nema dodatnih radova.",
+          },
+        ],
+      },
     },
     materials: {
-      concrete: { name: "BETON", label: "STABILAN • ČVRST", application: "Unutrašnje i spoljašnje" },
-      brick: { name: "CIGLA", label: "MODULARNA • SPOJENA", application: "Spoljašnje fasade" },
-      wood: { name: "DRVO", label: "ORGANSKO • ŽILAVO", application: "Enterijeri" },
-      glass: { name: "STAKLO", label: "NEPOROZNO • REFLEKTUJUĆE", application: "Retail prostori" },
+      concrete: { 
+        name: "BETON", 
+        label: "STABILAN • ČVRST", 
+        application: "Unutrašnje i spoljašnje",
+        notes: "Najstabilnija površina. Nema posebnih izazova. Trajno prianjanje. Ne preporučuje se za praškaste ili vlažne betone.",
+      },
+      brick: { 
+        name: "CIGLA", 
+        label: "MODULARNA • SPOJENA", 
+        application: "Spoljašnje fasade",
+        notes: "Fugovanje može biti vidljivo u dizajnu. Potrebna provera stabilnosti fuga. Otporno na vremenske uslove. Ne preporučuje se za oštećene ili nestabilne fuge.",
+      },
+      wood: { 
+        name: "DRVO", 
+        label: "ORGANSKO • ŽILAVO", 
+        application: "Enterijeri",
+        notes: "Drvo se može blago izobličiti tokom vremena—dizajn se prilagođava. Potrebna provera vlage. Trajno prianjanje na stabilno drvo. Ne preporučuje se za spoljašnje primene bez zaštite.",
+      },
+      glass: { 
+        name: "STAKLO", 
+        label: "NEPOROZNO • REFLEKTUJUĆE", 
+        application: "Retail prostori",
+        notes: "Potrebna posebna priprema za trajno prianjanje. Refleksija može uticati na čitljivost. Trajno prianjanje na čisto staklo. Ne preporučuje se za stakla sa premazom ili zaštitnim filmom.",
+      },
     },
     trust: {
       completedProjects: "ZAVRŠENI PROJEKTI",
       printedArea: "ŠTAMPANA POVRŠINA",
       operationalSince: "U FUNKCIJI OD",
       responseTime: "VREME ODGOVORA",
+      context: {
+        oldestWork: "Najstariji aktivan rad: 3+ godine (unutrašnji komercijalni)",
+        indoorOutdoor: "Unutrašnje: 10+ godina očekivano. Spoljašnje: 5–7 godina (zavisi od vremenskih uslova)",
+        cleaning: "Standardno komercijalno pranje: nema degradacije uočene",
+        degradation: "Nema odlepljivanja ili izbledevanja uočenih u praćenim projektima",
+      },
       testimonials: [
         {
           quote: "Nula pripreme površine. Direktna primena na postojeći beton.",
@@ -196,9 +253,9 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
-      headline: "ARCHITECTURAL WALL PRINTING. EXECUTED BY ROBOT.",
-      subheadline: "Permanent UV printing directly into the surface.\nNo vinyl. No decals. No manual work.",
-      cta: "REQUEST A PROJECT CONSULTATION",
+      headline: "PERMANENT ARCHITECTURAL GRAPHICS. NO VINYL. NO REMODELING.",
+      subheadline: "Permanent UV printing directly into the surface.\nWall ready for use immediately. Executed by robotic system.",
+      cta: "CHECK IF YOUR WALL IS SUITABLE",
       emailUs: "EMAIL",
       whatsapp: "WHATSAPP",
       replyTime: "Reply within 8 hours (business days)",
@@ -231,6 +288,16 @@ export const translations = {
         maintenance: { label: "Maintenance", value: "Standard cleaning, no special requirements. Permanent UV paint adhesion." },
         durability: { label: "Durability", value: "Permanent adhesion to surface. Resistant to weather and standard cleaning." },
         executionConstraints: { label: "Execution constraints", value: "Vertical: 4m+. Horizontal: unlimited. Requires machine access to surface." },
+        limitations: {
+          title: "LIMITATIONS AND WHAT WE DON'T DO",
+          items: [
+            "We do not design graphics—we only execute existing files.",
+            "We do not print on textile, flexible, or unstable surfaces.",
+            "We do not guarantee results on surfaces with active moisture or structural issues.",
+            "We do not take projects under 5 m² without special coordination.",
+            "We do not use vinyl, decals, or temporary solutions—only permanent UV printing.",
+          ],
+        },
       },
       finalCta: {
         title: "REQUEST A PROJECT CONSULTATION",
@@ -241,7 +308,7 @@ export const translations = {
         microcopy: "For architects, designers, and commercial projects.",
       },
       ctaModal: {
-        title: "REQUEST A PROJECT CONSULTATION",
+        title: "CHECK IF YOUR WALL IS SUITABLE",
         spaceType: "Space type",
         surfaceType: "Surface type",
         size: "Approximate size",
@@ -253,12 +320,53 @@ export const translations = {
         submit: "SUBMIT",
         promise: "Feasibility, rough cost range, and timeline within 8 business hours.",
       },
+      collaborationProcess: {
+        title: "How collaboration works (in practice)",
+        steps: [
+          {
+            title: "First contact",
+            description: "You provide basic information: space type, wall surface, approximate dimensions. We respond within 8 hours with preliminary assessment.",
+          },
+          {
+            title: "Technical wall check",
+            description: "Site visit or photo submission. We assess surface stability, moisture, structural issues. Clearly define what's needed before printing.",
+          },
+          {
+            title: "On-site execution",
+            description: "Equipment transport, setup, calibration for specific material. Printing directly onto surface. Wall ready for use after completion.",
+          },
+          {
+            title: "Final delivery",
+            description: "Quality check, documentation, maintenance instructions. Wall is ready for use. No additional work required.",
+          },
+        ],
+      },
     },
     materials: {
-      concrete: { name: "CONCRETE", label: "STABLE • SOLID", application: "Indoor and outdoor" },
-      brick: { name: "BRICK", label: "MODULAR • JOINTED", application: "Outdoor facades" },
-      wood: { name: "WOOD", label: "ORGANIC • GRAIN", application: "Interiors" },
-      glass: { name: "GLASS", label: "NON-POROUS • REFLECTIVE", application: "Retail spaces" },
+      concrete: { 
+        name: "CONCRETE", 
+        label: "STABLE • SOLID", 
+        application: "Indoor and outdoor",
+        notes: "Most stable surface. No special challenges. Permanent adhesion. Not recommended for powdery or damp concrete.",
+      },
+      brick: { 
+        name: "BRICK", 
+        label: "MODULAR • JOINTED", 
+        application: "Outdoor facades",
+        notes: "Mortar joints may be visible in design. Joint stability check required. Weather-resistant. Not recommended for damaged or unstable joints.",
+      },
+      wood: { 
+        name: "WOOD", 
+        label: "ORGANIC • GRAIN", 
+        application: "Interiors",
+        notes: "Wood may slightly warp over time—design adapts. Moisture check required. Permanent adhesion on stable wood. Not recommended for outdoor use without protection.",
+      },
+      glass: { 
+        name: "GLASS", 
+        label: "NON-POROUS • REFLECTIVE", 
+        application: "Retail spaces",
+        notes: "Special prep required for permanent adhesion. Reflection may affect readability. Permanent adhesion on clean glass. Not recommended for coated or protected glass.",
+      },
     },
     trust: {
       completedProjects: "COMPLETED PROJECTS",
@@ -380,9 +488,9 @@ export const translations = {
       contact: "Контакты",
     },
     hero: {
-      headline: "АРХИТЕКТУРНАЯ ПЕЧАТЬ НА СТЕНАХ. ВЫПОЛНЯЕТ РОБОТ.",
-      subheadline: "Постоянная УФ-печать непосредственно на поверхность.\nБез винила. Без наклеек. Без ручной работы.",
-      cta: "ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ ПО ПРОЕКТУ",
+      headline: "ПОСТОЯННАЯ АРХИТЕКТУРНАЯ ГРАФИКА. БЕЗ ВИНИЛА. БЕЗ РЕМОНТА.",
+      subheadline: "Постоянная УФ-печать непосредственно на поверхность.\nСтена готова к использованию сразу. Выполняется роботической системой.",
+      cta: "ПРОВЕРЬТЕ, ПОДХОДИТ ЛИ ВАША СТЕНА",
       emailUs: "EMAIL",
       whatsapp: "WHATSAPP",
       replyTime: "Ответ в течение 8 часов (рабочие дни)",
@@ -415,6 +523,16 @@ export const translations = {
         maintenance: { label: "Обслуживание", value: "Стандартная очистка, без особых требований. Постоянное сцепление УФ-краски." },
         durability: { label: "Долговечность", value: "Постоянное сцепление с поверхностью. Устойчивость к погодным условиям и стандартной очистке." },
         executionConstraints: { label: "Ограничения выполнения", value: "Вертикально: 4м+. Горизонтально: без ограничений. Требуется доступ машины к поверхности." },
+        limitations: {
+          title: "ОГРАНИЧЕНИЯ И ЧТО МЫ НЕ ДЕЛАЕМ",
+          items: [
+            "Мы не разрабатываем графические элементы—только выполняем существующие файлы.",
+            "Мы не печатаем на текстильных, гибких или нестабильных поверхностях.",
+            "Мы не гарантируем результаты на поверхностях с активной влагой или структурными проблемами.",
+            "Мы не берем проекты менее 5 м² без специальной координации.",
+            "Мы не используем винил, наклейки или временные решения—только постоянную УФ-печать.",
+          ],
+        },
       },
       finalCta: {
         title: "ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ ПО ПРОЕКТУ",
@@ -425,7 +543,7 @@ export const translations = {
         microcopy: "Для архитекторов, дизайнеров и коммерческих проектов.",
       },
       ctaModal: {
-        title: "ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ ПО ПРОЕКТУ",
+        title: "ПРОВЕРЬТЕ, ПОДХОДИТ ЛИ ВАША СТЕНА",
         spaceType: "Тип помещения",
         surfaceType: "Тип поверхности",
         size: "Приблизительный размер",
@@ -437,18 +555,65 @@ export const translations = {
         submit: "ОТПРАВИТЬ",
         promise: "Выполнимость, примерный диапазон стоимости и временные рамки в течение 8 рабочих часов.",
       },
+      collaborationProcess: {
+        title: "Как работает сотрудничество (на практике)",
+        steps: [
+          {
+            title: "Первый контакт",
+            description: "Вы предоставляете основную информацию: тип помещения, поверхность стены, приблизительные размеры. Мы отвечаем в течение 8 часов с предварительной оценкой.",
+          },
+          {
+            title: "Техническая проверка стены",
+            description: "Посещение объекта или отправка фотографий. Мы оцениваем стабильность поверхности, влажность, структурные проблемы. Четко определяем, что необходимо перед печатью.",
+          },
+          {
+            title: "Выполнение на месте",
+            description: "Транспортировка оборудования, установка, калибровка для конкретного материала. Печать непосредственно на поверхность. Стена готова к использованию после завершения.",
+          },
+          {
+            title: "Финальная поставка",
+            description: "Проверка качества, документация, инструкции по обслуживанию. Стена готова к использованию. Дополнительных работ не требуется.",
+          },
+        ],
+      },
     },
     materials: {
-      concrete: { name: "БЕТОН", label: "СТАБИЛЬНЫЙ • ПРОЧНЫЙ", application: "Внутренние и наружные" },
-      brick: { name: "КИРПИЧ", label: "МОДУЛЬНЫЙ • СОЕДИНЕННЫЙ", application: "Наружные фасады" },
-      wood: { name: "ДЕРЕВО", label: "ОРГАНИЧЕСКИЙ • ЗЕРНИСТЫЙ", application: "Интерьеры" },
-      glass: { name: "СТЕКЛО", label: "НЕПОРИСТЫЙ • ОТРАЖАЮЩИЙ", application: "Торговые помещения" },
+      concrete: { 
+        name: "БЕТОН", 
+        label: "СТАБИЛЬНЫЙ • ПРОЧНЫЙ", 
+        application: "Внутренние и наружные",
+        notes: "Самая стабильная поверхность. Нет особых проблем. Постоянное сцепление. Не рекомендуется для порошкообразного или влажного бетона.",
+      },
+      brick: { 
+        name: "КИРПИЧ", 
+        label: "МОДУЛЬНЫЙ • СОЕДИНЕННЫЙ", 
+        application: "Наружные фасады",
+        notes: "Швы могут быть видны в дизайне. Требуется проверка стабильности швов. Устойчивость к погодным условиям. Не рекомендуется для поврежденных или нестабильных швов.",
+      },
+      wood: { 
+        name: "ДЕРЕВО", 
+        label: "ОРГАНИЧЕСКИЙ • ЗЕРНИСТЫЙ", 
+        application: "Интерьеры",
+        notes: "Дерево может слегка деформироваться со временем—дизайн адаптируется. Требуется проверка влажности. Постоянное сцепление на стабильном дереве. Не рекомендуется для наружного использования без защиты.",
+      },
+      glass: { 
+        name: "СТЕКЛО", 
+        label: "НЕПОРИСТЫЙ • ОТРАЖАЮЩИЙ", 
+        application: "Торговые помещения",
+        notes: "Требуется специальная подготовка для постоянного сцепления. Отражение может влиять на читаемость. Постоянное сцепление на чистом стекле. Не рекомендуется для покрытого или защищенного стекла.",
+      },
     },
     trust: {
       completedProjects: "ЗАВЕРШЕННЫЕ ПРОЕКТЫ",
       printedArea: "НАПЕЧАТАННАЯ ПЛОЩАДЬ",
       operationalSince: "РАБОТАЕМ С",
       responseTime: "ВРЕМЯ ОТВЕТА",
+      context: {
+        oldestWork: "Самая старая активная работа: 3+ года (внутренняя коммерческая)",
+        indoorOutdoor: "Внутренние: 10+ лет ожидается. Наружные: 5–7 лет (зависит от погодных условий)",
+        cleaning: "Стандартная коммерческая очистка: деградации не наблюдается",
+        degradation: "Отслоения или выцветания не наблюдается в отслеживаемых проектах",
+      },
       testimonials: [
         {
           quote: "Нулевая подготовка поверхности. Прямое нанесение на существующий бетон.",
