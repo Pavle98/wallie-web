@@ -373,6 +373,12 @@ export const translations = {
       printedArea: "PRINTED AREA",
       operationalSince: "OPERATIONAL SINCE",
       responseTime: "RESPONSE TIME",
+      context: {
+        oldestWork: "Oldest active work: 3+ years (indoor commercial)",
+        indoorOutdoor: "Indoor: 10+ years expected. Outdoor: 5–7 years (weather-dependent)",
+        cleaning: "Standard commercial cleaning: no degradation observed",
+        degradation: "No peeling or fading observed in monitored projects",
+      },
       testimonials: [
         {
           quote: "Zero surface prep required. Direct application on existing concrete.",
