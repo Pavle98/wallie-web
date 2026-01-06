@@ -2,10 +2,13 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
 import { getTranslations, type Locale } from "@/lib/i18n";
+import CTAModal from "@/components/CTAModal";
 
 export default function Hero({ locale }: { locale: Locale }) {
   const t = getTranslations(locale);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   return (
     <section className="relative flex min-h-screen items-end justify-center overflow-hidden pb-24 md:items-center md:justify-start md:pb-0">
       {/* Video Background */}
@@ -69,6 +72,16 @@ export default function Hero({ locale }: { locale: Locale }) {
             {t.hero.outcome}
           </motion.p>
 
+          {/* Clarity Statement */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
+            className="text-xs text-white/60 sm:text-sm leading-relaxed"
+          >
+            {t.hero.clarity}
+          </motion.p>
+
           {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -76,10 +89,14 @@ export default function Hero({ locale }: { locale: Locale }) {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex flex-col gap-3"
           >
-            <button className="group inline-flex items-center gap-3 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="group inline-flex items-center gap-3 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200"
+            >
               <span>{t.hero.cta}</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
+            <CTAModal locale={locale} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
             <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
               <a
                 href="mailto:contact@wallie.com"

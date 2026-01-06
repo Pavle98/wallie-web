@@ -11,8 +11,8 @@ export default function SurfaceExplorer({ locale }: { locale: Locale }) {
   
   // Merged: 4 best examples showing materials + applications
   const items = [
+    { name: t.materials.concrete.name, image: "/textures/concrete.png", label: t.materials.concrete.application },
     { name: t.materials.brick.name, image: "/examples/wall-printing-brick-facade-outdoor.jpg", label: t.materials.brick.application },
-    { name: t.materials.tiles.name, image: "/examples/wall-printing-ceramic-tiles.jpg", label: t.materials.tiles.application },
     { name: t.materials.wood.name, image: "/examples/wall-printing-wood-panel.jpg", label: t.materials.wood.application },
     { name: t.materials.glass.name, image: "/examples/wall-printing-glass-uv.jpg", label: t.materials.glass.application },
   ];
@@ -43,6 +43,7 @@ export default function SurfaceExplorer({ locale }: { locale: Locale }) {
                       alt={`${item.name} - ${item.label}`}
                       fill
                       className="object-cover"
+                      style={{ objectPosition: index === 1 ? "center top" : "center" }}
                       priority={index < 2}
                       sizes="(max-width: 768px) 50vw, 25vw"
                     />
