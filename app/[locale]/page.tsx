@@ -3,7 +3,6 @@ import Hero from "@/components/Hero";
 import SurfaceExplorer from "@/components/SurfaceExplorer";
 import PrinterRevealSlider from "@/components/PrinterRevealSlider";
 import TrustStack from "@/components/TrustStack";
-import PortfolioGrid from "@/components/PortfolioGrid";
 import HowItWorks from "@/components/HowItWorks";
 import BentoGrid from "@/components/BentoGrid";
 import FAQ from "@/components/FAQ";
@@ -86,7 +85,6 @@ export default async function HomePage({
       <SurfaceExplorer locale={validLocale} />
       <PrinterRevealSlider locale={validLocale} />
       <TrustStack locale={validLocale} />
-      <PortfolioGrid locale={validLocale} />
       <HowItWorks locale={validLocale} />
       <BentoGrid locale={validLocale} />
       <FAQ locale={validLocale} />

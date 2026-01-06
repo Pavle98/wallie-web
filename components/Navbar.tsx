@@ -73,9 +73,9 @@ export default function Navbar({ locale }: { locale: Locale }) {
   const closeMenu = () => setIsOpen(false);
 
   const navLinks = [
-    { name: t.nav.home, href: "#" },
-    { name: t.nav.technology, href: "#technology" },
-    { name: t.nav.portfolio, href: "#portfolio" },
+    { name: t.nav.home, href: `/${locale}`, isLink: true },
+    { name: t.nav.technology, href: "#technology", isLink: false },
+    { name: t.nav.portfolio, href: `/${locale}/portfolio`, isLink: true },
   ];
   
   const contactLink = { name: t.nav.contact, href: "#contact" };
@@ -156,18 +156,34 @@ export default function Navbar({ locale }: { locale: Locale }) {
             </div>
             {/* Desktop Navigation Links - Hidden on mobile */}
             <div className="hidden md:flex items-center gap-6 lg:gap-8">
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="text-sm font-medium text-white/90 transition-colors hover:text-white whitespace-nowrap"
-                >
-                  {link.name}
-                </motion.a>
-              ))}
+              {navLinks.map((link, index) => {
+                if (link.isLink) {
+                  return (
+                    <Link key={link.name} href={link.href}>
+                      <motion.span
+                        initial={{ opacity: 0, y: -20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: index * 0.1 }}
+                        className="text-sm font-medium text-white/90 transition-colors hover:text-white whitespace-nowrap cursor-pointer"
+                      >
+                        {link.name}
+                      </motion.span>
+                    </Link>
+                  );
+                }
+                return (
+                  <motion.a
+                    key={link.name}
+                    href={link.href}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="text-sm font-medium text-white/90 transition-colors hover:text-white whitespace-nowrap"
+                  >
+                    {link.name}
+                  </motion.a>
+                );
+              })}
             </div>
 
             {/* Desktop Contact Link - Hidden on mobile */}
@@ -217,19 +233,36 @@ export default function Navbar({ locale }: { locale: Locale }) {
             >
               {/* Mobile Navigation Links */}
               <div className="flex flex-col gap-10">
-                {navLinks.map((link, index) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    onClick={closeMenu}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    className="text-2xl font-medium text-white/90 transition-colors hover:text-white"
-                  >
-                    {link.name}
-                  </motion.a>
-                ))}
+                {navLinks.map((link, index) => {
+                  if (link.isLink) {
+                    return (
+                      <Link key={link.name} href={link.href} onClick={closeMenu}>
+                        <motion.span
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -20 }}
+                          transition={{ duration: 0.3, delay: index * 0.1 }}
+                          className="text-2xl font-medium text-white/90 transition-colors hover:text-white"
+                        >
+                          {link.name}
+                        </motion.span>
+                      </Link>
+                    );
+                  }
+                  return (
+                    <motion.a
+                      key={link.name}
+                      href={link.href}
+                      onClick={closeMenu}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3, delay: index * 0.1 }}
+                      className="text-2xl font-medium text-white/90 transition-colors hover:text-white"
+                    >
+                      {link.name}
+                    </motion.a>
+                  );
+                })}
                 
                 {/* Mobile Language Switcher */}
                 <div className="border-t border-zinc-800 pt-6">

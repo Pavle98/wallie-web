@@ -24,6 +24,7 @@ export const translations = {
     },
     sections: {
       supportedMaterials: "PODRŽANI MATERIJALI",
+      applicationsAndMaterials: "PRIMENE I MATERIJALI",
       executionVerification: "VERIFIKACIJA IZVRŠENJA",
       executionVerificationDesc: "Direktna primena na betonsku podlogu.",
       executionVerificationCaption: "Beton · 12 m² · 2h · Unutrašnje",
@@ -33,6 +34,8 @@ export const translations = {
       howItWorks: "Kako Funkcioniše",
       systemCapabilities: "SISTEMSKI KAPACITETI",
       technologyThatTransforms: "Tehnologija Koja Transformiše",
+      applicationExamples: "Primeri primene i vizuelnog efekta",
+      viewPortfolio: "Pogledaj Portfolio",
       faq: "ČESTA PITANJA",
       finalCta: {
         title: "ZAHTEVAJTE KONSULTACIJU PROJEKTA",
@@ -44,10 +47,10 @@ export const translations = {
       },
     },
     materials: {
-      concrete: { name: "BETON", label: "MINERAL • POROZAN" },
-      brick: { name: "CIGLA", label: "MODULARNA • SPOJENA" },
-      wood: { name: "DRVO", label: "ORGANSKO • ŽILAVO" },
-      glass: { name: "STAKLO", label: "NEPOROZNO • REFLEKTUJUĆE" },
+      tiles: { name: "PLOČICE", label: "KERAMIČKE • OTPORNE", application: "Unutrašnji prostori" },
+      brick: { name: "CIGLA", label: "MODULARNA • SPOJENA", application: "Spoljašnje fasade" },
+      wood: { name: "DRVO", label: "ORGANSKO • ŽILAVO", application: "Enterijeri" },
+      glass: { name: "STAKLO", label: "NEPOROZNO • REFLEKTUJUĆE", application: "Retail prostori" },
     },
     trust: {
       completedProjects: "ZAVRŠENI PROJEKTI",
@@ -181,6 +184,7 @@ export const translations = {
     },
     sections: {
       supportedMaterials: "SUPPORTED MATERIALS",
+      applicationsAndMaterials: "APPLICATIONS & MATERIALS",
       executionVerification: "EXECUTION VERIFICATION",
       executionVerificationDesc: "Direct-to-surface application on concrete substrate.",
       executionVerificationCaption: "Concrete · 12 m² · 2h · Indoor",
@@ -190,6 +194,8 @@ export const translations = {
       howItWorks: "How It Works",
       systemCapabilities: "SYSTEM CAPABILITIES",
       technologyThatTransforms: "Technology That Transforms",
+      applicationExamples: "Application Examples & Visual Impact",
+      viewPortfolio: "View Portfolio",
       faq: "FAQ",
       finalCta: {
         title: "REQUEST A PROJECT CONSULTATION",
@@ -201,10 +207,10 @@ export const translations = {
       },
     },
     materials: {
-      concrete: { name: "CONCRETE", label: "MINERAL • POROUS" },
-      brick: { name: "BRICK", label: "MODULAR • JOINTED" },
-      wood: { name: "WOOD", label: "ORGANIC • GRAIN" },
-      glass: { name: "GLASS", label: "NON-POROUS • REFLECTIVE" },
+      tiles: { name: "TILES", label: "CERAMIC • DURABLE", application: "Interior spaces" },
+      brick: { name: "BRICK", label: "MODULAR • JOINTED", application: "Outdoor facades" },
+      wood: { name: "WOOD", label: "ORGANIC • GRAIN", application: "Interiors" },
+      glass: { name: "GLASS", label: "NON-POROUS • REFLECTIVE", application: "Retail spaces" },
     },
     trust: {
       completedProjects: "COMPLETED PROJECTS",
@@ -338,6 +344,7 @@ export const translations = {
     },
     sections: {
       supportedMaterials: "ПОДДЕРЖИВАЕМЫЕ МАТЕРИАЛЫ",
+      applicationsAndMaterials: "ПРИМЕНЕНИЯ И МАТЕРИАЛЫ",
       executionVerification: "ПРОВЕРКА ВЫПОЛНЕНИЯ",
       executionVerificationDesc: "Прямое нанесение на бетонную основу.",
       executionVerificationCaption: "Бетон · 12 м² · 2ч · Внутреннее",
@@ -347,6 +354,8 @@ export const translations = {
       howItWorks: "Как Это Работает",
       systemCapabilities: "ВОЗМОЖНОСТИ СИСТЕМЫ",
       technologyThatTransforms: "Технология, Которая Преобразует",
+      applicationExamples: "Примеры применения и визуального эффекта",
+      viewPortfolio: "Посмотреть Портфолио",
       faq: "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ",
       finalCta: {
         title: "ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ ПО ПРОЕКТУ",
@@ -358,10 +367,10 @@ export const translations = {
       },
     },
     materials: {
-      concrete: { name: "БЕТОН", label: "МИНЕРАЛ • ПОРИСТЫЙ" },
-      brick: { name: "КИРПИЧ", label: "МОДУЛЬНЫЙ • СОЕДИНЕННЫЙ" },
-      wood: { name: "ДЕРЕВО", label: "ОРГАНИЧЕСКИЙ • ЗЕРНИСТЫЙ" },
-      glass: { name: "СТЕКЛО", label: "НЕПОРИСТЫЙ • ОТРАЖАЮЩИЙ" },
+      tiles: { name: "ПЛИТКА", label: "КЕРАМИЧЕСКАЯ • ПРОЧНАЯ", application: "Внутренние помещения" },
+      brick: { name: "КИРПИЧ", label: "МОДУЛЬНЫЙ • СОЕДИНЕННЫЙ", application: "Наружные фасады" },
+      wood: { name: "ДЕРЕВО", label: "ОРГАНИЧЕСКИЙ • ЗЕРНИСТЫЙ", application: "Интерьеры" },
+      glass: { name: "СТЕКЛО", label: "НЕПОРИСТЫЙ • ОТРАЖАЮЩИЙ", application: "Торговые помещения" },
     },
     trust: {
       completedProjects: "ЗАВЕРШЕННЫЕ ПРОЕКТЫ",
