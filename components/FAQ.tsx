@@ -14,7 +14,7 @@ export default function FAQ({ locale }: { locale: Locale }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="bg-[#0a0b0a] py-16 px-4">
+    <section className="bg-[#0a0c0a] py-16 px-4">
       <div className="mx-auto max-w-4xl px-6 md:px-12">
         <motion.h2
           initial={{ opacity: 0 }}
@@ -38,17 +38,17 @@ export default function FAQ({ locale }: { locale: Locale }) {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex w-full items-start justify-between gap-4 text-left"
+                className="flex w-full items-start justify-between gap-4 py-2 text-left transition-colors hover:text-white/90"
               >
                 <h3 className="text-sm font-medium uppercase tracking-wide text-white">
                   {faq.question}
                 </h3>
-                <span className="flex-shrink-0 text-zinc-500">
+                <span className="flex-shrink-0 text-zinc-500 text-lg">
                   {openIndex === index ? "−" : "+"}
                 </span>
               </button>
               {openIndex === index && (
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400">
+                <p className="mt-3 px-0 text-sm leading-relaxed text-zinc-400 sm:px-0">
                   {faq.answer}
                 </p>
               )}

@@ -59,6 +59,16 @@ export default function Hero({ locale }: { locale: Locale }) {
             ))}
           </motion.p>
 
+          {/* Outcome Statement */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+            className="text-sm text-white/75 sm:text-base leading-relaxed"
+          >
+            {t.hero.outcome}
+          </motion.p>
+
           {/* Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}

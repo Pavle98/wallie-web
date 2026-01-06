@@ -15,17 +15,28 @@ export default function PortfolioGrid({ locale }: { locale: Locale }) {
     };
   });
   return (
-    <section className="bg-[#0a0b0a] py-16 px-4">
+    <section className="bg-[#0a0c0a] py-16 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="mb-8 text-sm font-mono uppercase tracking-wider text-zinc-400"
-        >
-          {t.sections.selectedWork}
-        </motion.h2>
+        <div className="mb-8">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4 }}
+            className="mb-2 text-sm font-mono uppercase tracking-wider text-zinc-400"
+          >
+            {t.sections.selectedWork}
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="text-xs text-zinc-500"
+          >
+            {t.portfolio.context}
+          </motion.p>
+        </div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((project, index) => (

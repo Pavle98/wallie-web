@@ -80,7 +80,7 @@ export default async function HomePage({
   const t = getTranslations(validLocale);
 
   return (
-    <main className="min-h-screen bg-[#0a0b0a]">
+    <main className="min-h-screen bg-[#0a0c0a]">
       <Navbar locale={validLocale} />
       <Hero locale={validLocale} />
       <SurfaceExplorer locale={validLocale} />
@@ -92,7 +92,7 @@ export default async function HomePage({
       <FAQ locale={validLocale} />
       
       {/* Final CTA */}
-      <section className="bg-[#0a0b0a] py-24 px-4">
+      <section className="bg-[#0a0c0a] py-24 px-4">
         <div className="mx-auto max-w-7xl px-6 md:px-12">
           <div className="flex flex-col items-center gap-4">
             <button className="group inline-flex items-center gap-3 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200">
@@ -128,7 +128,7 @@ export default async function HomePage({
         </div>
       </section>
 
-      <footer className="border-t border-[#ededed]/10 bg-[#0a0b0a] py-12 px-4">
+      <footer className="border-t border-[#ededed]/10 bg-[#0a0c0a] py-12 px-4">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {/* Company Info */}
@@ -151,22 +151,26 @@ export default async function HomePage({
               <h3 className="mb-3 text-xs font-mono uppercase tracking-wider text-zinc-400">
                 {t.footer.contact}
               </h3>
-              <div className="space-y-1 text-sm text-[#ededed]/60">
-                <a
-                  href="mailto:contact@wallie.com"
-                  className="block transition-colors hover:text-white"
-                >
-                  contact@wallie.com
-                </a>
-                <a
-                  href="tel:+381605030043"
-                  className="block transition-colors hover:text-white"
-                >
-                  +381 60 503 0043
-                </a>
-                <p className="mt-1 text-xs text-zinc-500">
-                  {t.footer.whatsappViber}
-                </p>
+              <div className="space-y-2 text-sm text-[#ededed]/60">
+                <div>
+                  <a
+                    href="mailto:contact@wallie.com"
+                    className="block transition-colors hover:text-white"
+                  >
+                    contact@wallie.com
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="tel:+381605030043"
+                    className="block transition-colors hover:text-white"
+                  >
+                    +381 60 503 0043
+                  </a>
+                  <p className="mt-0.5 text-xs text-zinc-500">
+                    {t.footer.whatsappViber}
+                  </p>
+                </div>
               </div>
             </div>
 

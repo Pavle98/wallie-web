@@ -46,7 +46,7 @@ export default function HowItWorks({ locale }: { locale: Locale }) {
   const step3Slide = useTransform(scrollYProgress, [0.66, 0.86], [20, 0], { clamp: true });
 
   return (
-    <section ref={sectionRef} className="relative bg-[#0a0b0a] py-24 px-4">
+    <section ref={sectionRef} className="relative bg-[#0a0c0a] py-24 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* Section Intro */}
         <div className="mb-16">
