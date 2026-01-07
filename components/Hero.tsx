@@ -10,7 +10,7 @@ export default function Hero({ locale }: { locale: Locale }) {
   const t = getTranslations(locale);
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
-    <section className="relative flex min-h-screen items-end justify-center overflow-hidden pb-24 md:items-center md:justify-start md:pb-0">
+    <section className="relative flex min-h-[100svh] items-end justify-center overflow-hidden pb-24 pt-24 md:items-center md:justify-start md:pb-0 md:pt-20">
       {/* Video Background */}
       <video
         autoPlay
@@ -97,29 +97,10 @@ export default function Hero({ locale }: { locale: Locale }) {
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
             <CTAModal locale={locale} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-            <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-4">
-              <a
-                href="mailto:contact@wallie.com"
-                className="text-sm font-mono uppercase tracking-wider text-white/80 underline underline-offset-4 transition-colors hover:text-white"
-              >
-                {t.hero.emailUs}
-              </a>
-              <span className="hidden text-zinc-600 sm:inline">·</span>
-              <a
-                href="https://wa.me/381605030043"
-                className="text-sm font-mono uppercase tracking-wider text-white/80 underline underline-offset-4 transition-colors hover:text-white"
-              >
-                {t.hero.whatsapp}
-              </a>
-              <span className="hidden text-zinc-600 sm:inline">·</span>
-              <p className="text-xs text-white/50">
-                {t.hero.replyTime}
-              </p>
-            </div>
             <p className="text-xs text-white/50">
-              {t.hero.phone}
+              {t.hero.phone} · {t.hero.replyTime}
             </p>
-            <p className="text-sm text-white/60">
+            <p className="text-xs text-white/60">
               {t.hero.microcopy}
             </p>
           </motion.div>

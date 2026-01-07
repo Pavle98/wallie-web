@@ -4,12 +4,8 @@ import SurfaceExplorer from "@/components/SurfaceExplorer";
 import ExecutionPartner from "@/components/ExecutionPartner";
 import PrinterRevealSlider from "@/components/PrinterRevealSlider";
 import TrustStack from "@/components/TrustStack";
-import HowItWorks from "@/components/HowItWorks";
-import BentoGrid from "@/components/BentoGrid";
-import TechnicalTrust from "@/components/TechnicalTrust";
-import FAQ from "@/components/FAQ";
 import CollaborationProcess from "@/components/CollaborationProcess";
-import FinalCTA from "@/components/FinalCTA";
+import MiniFAQ from "@/components/MiniFAQ";
 import { Instagram, Linkedin } from "lucide-react";
 import { getTranslations, type Locale, locales, defaultLocale } from "@/lib/i18n";
 import { redirect } from "next/navigation";
@@ -90,12 +86,8 @@ export default async function HomePage({
       <SurfaceExplorer locale={validLocale} />
       <PrinterRevealSlider locale={validLocale} />
       <TrustStack locale={validLocale} />
-      <HowItWorks locale={validLocale} />
-      <BentoGrid locale={validLocale} />
       <CollaborationProcess locale={validLocale} />
-      <TechnicalTrust locale={validLocale} />
-      <FAQ locale={validLocale} />
-      <FinalCTA locale={validLocale} />
+      <MiniFAQ locale={validLocale} />
 
       <footer className="border-t border-[#ededed]/10 bg-[#0a0c0a] py-12 px-4">
         <div className="mx-auto max-w-7xl">
@@ -106,7 +98,6 @@ export default async function HomePage({
                 {t.footer.companyName}
               </h3>
               <div className="space-y-1 text-sm text-[#ededed]/60">
-                <p>Joze Šćurle 36</p>
                 <p>Belgrade (Zemun), Serbia</p>
                 <p className="mt-2 font-mono text-xs text-zinc-500">
                   PIB: 114546952
