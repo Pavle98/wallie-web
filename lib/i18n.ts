@@ -86,6 +86,80 @@ export const translations = {
         success: "Primili smo vaš upit i kontaktiraćemo vas uskoro.\nAko već imate fotografije ili planove, možete ih poslati kasnije u odgovoru.",
         error: "Greška. Pokušajte ponovo ili kontaktirajte nas direktno.",
       },
+      proofOfExecution: {
+        title: "Dokaz izvršenja u stvarnim prostorima",
+        subtitle: "Primeri kako se projekti isporučuju u stvarnim operativnim uslovima.",
+        goal: "Cilj",
+        execution: "Izvršenje",
+        operationalProof: "Operativni dokaz",
+        result: "Rezultat",
+        cards: [
+          {
+            title: "Unutrašnjost prodavnice",
+            goal: "Instalacija brend zida bez zatvaranja prodavnice ili prekida rada sa kupcima.",
+            execution: [
+              "Površina zida: obojeni beton",
+              "Površina: 12 m²",
+              "Vizuel: brend mural + logo elementi",
+            ],
+            operationalProof: [
+              "Štampano tokom radnog vremena",
+              "Vreme izvršenja: ~2 sata",
+              "Bez građevinskih radova, bez prekida rada",
+            ],
+            result: "Završen brend zid istog dana, bez uticaja na rad prodavnice.",
+            image: null,
+          },
+          {
+            title: "Kancelarijski prostor",
+            goal: "Nadogradnja brendiranja kancelarije bez remećenja dnevnog rada.",
+            execution: [
+              "Površine zidova: gipsana tabla i obojeni beton",
+              "Površina: 22 m²",
+              "Vizuel: grafički elementi brenda velikog formata",
+            ],
+            operationalProof: [
+              "Instalirano posle radnog vremena",
+              "Izvršenje završeno u jedno veče",
+              "Kancelarija potpuno operativna sledećeg jutra",
+            ],
+            result: "Trenutna vizuelna transformacija bez uticaja na zaposlene ili raspored.",
+            image: null,
+          },
+          {
+            title: "Hotel / ugostiteljski interijer",
+            goal: "Dekorativni mural u gostinskom prostoru sa minimalnim postavljanjem i čistim završetkom.",
+            execution: [
+              "Površina zida: glatka žbuka",
+              "Površina: 9 m²",
+              "Vizuel: dekorativna zidna umetnost",
+            ],
+            operationalProof: [
+              "Bez skela ili teške opreme",
+              "Niska buka tokom instalacije",
+              "Završeno u jednoj poseti",
+            ],
+            result: "Premium vizuelna nadogradnja bez duge instalacije ili remontnog prekida rada.",
+            image: null,
+          },
+          {
+            title: "Eksterijer fasade",
+            goal: "Dugotrajno brendiranje na spoljašnjoj površini izloženoj vremenskim uslovima i suncu.",
+            execution: [
+              "Površina zida: spoljašnja žbuka",
+              "Površina: 10 m²",
+              "Vizuel: elementi brend identiteta i signalizacije",
+            ],
+            operationalProof: [
+              "UV-otporna boja i priprema površine",
+              "Dizajnirano za spoljašnju izdržljivost",
+              "Bez dodatnih montaža ili panela",
+            ],
+            result: "Trajno spoljašnje brendiranje sa očekivanim vekom trajanja od 5–7 godina, direktno na zidu.",
+            image: null,
+          },
+        ],
+      },
       collaborationProcess: {
         title: "Kako funkcioniše saradnja",
         steps: [
@@ -330,6 +404,80 @@ export const translations = {
         success: "We've received your inquiry and will contact you shortly.\nIf you already have photos or plans, you can send them later in reply.",
         error: "Error. Please try again or contact us directly.",
       },
+      proofOfExecution: {
+        title: "Proof of execution in real spaces",
+        subtitle: "Examples of how projects are delivered in real operational conditions.",
+        goal: "Goal",
+        execution: "Execution",
+        operationalProof: "Operational proof",
+        result: "Result",
+        cards: [
+          {
+            title: "Retail store interior",
+            goal: "Brand wall installation without closing the store or interrupting customers.",
+            execution: [
+              "Wall surface: painted concrete",
+              "Area: 12 m²",
+              "Visual: brand mural + logo elements",
+            ],
+            operationalProof: [
+              "Printed during business hours",
+              "Execution time: approx. 2 hours",
+              "No construction work, no downtime",
+            ],
+            result: "Finished branded wall the same day, with zero impact on store operations.",
+            image: null,
+          },
+          {
+            title: "Office workspace",
+            goal: "Upgrade office branding without disrupting daily work.",
+            execution: [
+              "Wall surfaces: drywall and painted concrete",
+              "Area: 22 m²",
+              "Visual: large-scale brand graphics",
+            ],
+            operationalProof: [
+              "Installed after working hours",
+              "Execution completed in one evening",
+              "Office fully operational the next morning",
+            ],
+            result: "Immediate visual transformation without affecting employees or schedules.",
+            image: null,
+          },
+          {
+            title: "Hotel / hospitality interior",
+            goal: "Decorative mural in guest area with minimal setup and clean finish.",
+            execution: [
+              "Wall surface: smooth plaster",
+              "Area: 9 m²",
+              "Visual: decorative wall artwork",
+            ],
+            operationalProof: [
+              "No scaffolding or heavy equipment",
+              "Low-noise installation",
+              "Finished within a single visit",
+            ],
+            result: "Premium visual upgrade without long installation or renovation downtime.",
+            image: null,
+          },
+          {
+            title: "Exterior facade",
+            goal: "Long-term branding on outdoor surface exposed to weather and sunlight.",
+            execution: [
+              "Wall surface: exterior plaster",
+              "Area: 10 m²",
+              "Visual: brand identity and signage elements",
+            ],
+            operationalProof: [
+              "UV-resistant inks and surface preparation",
+              "Designed for outdoor durability",
+              "No additional mounting or panels required",
+            ],
+            result: "Permanent exterior branding with expected lifespan of 5–7 years, directly on the wall.",
+            image: null,
+          },
+        ],
+      },
       collaborationProcess: {
         title: "How the collaboration works",
         steps: [
@@ -573,6 +721,80 @@ export const translations = {
         successTitle: "Спасибо!",
         success: "Мы получили ваш запрос и свяжемся с вами в ближайшее время.\nЕсли у вас уже есть фотографии или планы, вы можете отправить их позже в ответе.",
         error: "Ошибка. Попробуйте снова или свяжитесь с нами напрямую.",
+      },
+      proofOfExecution: {
+        title: "Доказательство выполнения в реальных пространствах",
+        subtitle: "Примеры того, как проекты реализуются в реальных операционных условиях.",
+        goal: "Цель",
+        execution: "Выполнение",
+        operationalProof: "Операционное доказательство",
+        result: "Результат",
+        cards: [
+          {
+            title: "Интерьер магазина",
+            goal: "Установка брендовой стены без закрытия магазина или прерывания работы с клиентами.",
+            execution: [
+              "Поверхность стены: окрашенный бетон",
+              "Площадь: 12 м²",
+              "Визуал: брендовый мурал + элементы логотипа",
+            ],
+            operationalProof: [
+              "Печать в рабочее время",
+              "Время выполнения: ~2 часа",
+              "Без строительных работ, без простоя",
+            ],
+            result: "Готовая брендовая стена в тот же день, без влияния на работу магазина.",
+            image: null,
+          },
+          {
+            title: "Офисное пространство",
+            goal: "Обновление брендинга офиса без нарушения ежедневной работы.",
+            execution: [
+              "Поверхности стен: гипсокартон и окрашенный бетон",
+              "Площадь: 22 м²",
+              "Визуал: крупномасштабная брендовая графика",
+            ],
+            operationalProof: [
+              "Установлено после рабочего времени",
+              "Выполнение завершено за один вечер",
+              "Офис полностью работоспособен на следующее утро",
+            ],
+            result: "Мгновенная визуальная трансформация без влияния на сотрудников или расписание.",
+            image: null,
+          },
+          {
+            title: "Интерьер отеля / гостиничного бизнеса",
+            goal: "Декоративный мурал в гостевой зоне с минимальной установкой и чистым финишем.",
+            execution: [
+              "Поверхность стены: гладкая штукатурка",
+              "Площадь: 9 м²",
+              "Визуал: декоративное настенное искусство",
+            ],
+            operationalProof: [
+              "Без лесов или тяжелого оборудования",
+              "Низкошумная установка",
+              "Завершено за один визит",
+            ],
+            result: "Премиум визуальное обновление без длительной установки или ремонтного простоя.",
+            image: null,
+          },
+          {
+            title: "Экстерьер фасада",
+            goal: "Долгосрочный брендинг на наружной поверхности, подверженной погодным условиям и солнечному свету.",
+            execution: [
+              "Поверхность стены: наружная штукатурка",
+              "Площадь: 10 м²",
+              "Визуал: элементы бренд-идентичности и вывески",
+            ],
+            operationalProof: [
+              "УФ-стойкие чернила и подготовка поверхности",
+              "Разработано для наружной долговечности",
+              "Без дополнительных креплений или панелей",
+            ],
+            result: "Постоянный наружный брендинг с ожидаемым сроком службы 5–7 лет, непосредственно на стене.",
+            image: null,
+          },
+        ],
       },
       collaborationProcess: {
         title: "Как работает сотрудничество",

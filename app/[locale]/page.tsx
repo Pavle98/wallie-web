@@ -4,6 +4,7 @@ import SurfaceExplorer from "@/components/SurfaceExplorer";
 import ExecutionPartner from "@/components/ExecutionPartner";
 import PrinterRevealSlider from "@/components/PrinterRevealSlider";
 import TrustStack from "@/components/TrustStack";
+import ProofOfExecution from "@/components/ProofOfExecution";
 import CollaborationProcess from "@/components/CollaborationProcess";
 import MiniFAQ from "@/components/MiniFAQ";
 import { Instagram, Linkedin } from "lucide-react";
@@ -86,6 +87,7 @@ export default async function HomePage({
       <SurfaceExplorer locale={validLocale} />
       <PrinterRevealSlider locale={validLocale} />
       <TrustStack locale={validLocale} />
+      <ProofOfExecution locale={validLocale} />
       <CollaborationProcess locale={validLocale} />
       <MiniFAQ locale={validLocale} />
 
