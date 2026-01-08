@@ -114,11 +114,16 @@ export default async function HomePage({
               <div className="space-y-2 text-sm text-[#ededed]/60">
                 <div>
                   <a
-                    href="mailto:contact@wallie.com"
+                    href="mailto:contact@wallie.rs"
                     className="block transition-colors hover:text-white"
                   >
-                    contact@wallie.com
+                    contact@wallie.rs
                   </a>
+                </div>
+                <div>
+                  <p className="text-xs text-zinc-500 mt-2">
+                    Wallie is a brand of Cruderly DOO.
+                  </p>
                 </div>
                 <div>
                   <a

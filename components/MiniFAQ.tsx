@@ -10,8 +10,8 @@ export default function MiniFAQ({ locale }: { locale: Locale }) {
   const t = getTranslations(locale);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  // Select 3 key questions: durability, pricing, timeline
-  const keyQuestionIndexes = [0, 5, 7]; // durability, pricing, timeline
+  // Select 3 key questions: durability, wall surface requirements, pricing
+  const keyQuestionIndexes = [0, 6, 5]; // durability, wall surface requirements, pricing
   const keyQuestions = keyQuestionIndexes.map((i) => ({
     question: t.faq.questions[i],
     answer: t.faq.answers[i],

@@ -76,6 +76,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
     { name: t.nav.home, href: `/${locale}`, isLink: true },
     { name: t.nav.technology, href: "#technology", isLink: false },
     { name: t.nav.portfolio, href: `/${locale}/portfolio`, isLink: true },
+    { name: t.nav.faq, href: `/${locale}/faq`, isLink: true },
   ];
   
   const contactLink = { name: t.nav.contact, href: "#contact" };
