@@ -62,6 +62,18 @@ export default function Hero({ locale }: { locale: Locale }) {
             ))}
           </motion.p>
 
+          {/* Audience Line (B2B + B2C) */}
+          {t.hero.audienceLine && (
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
+              className="text-sm text-white/80 sm:text-base leading-relaxed"
+            >
+              {t.hero.audienceLine}
+            </motion.p>
+          )}
+
           {/* Outcome Statement */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -70,16 +82,6 @@ export default function Hero({ locale }: { locale: Locale }) {
             className="text-sm text-white/75 sm:text-base leading-relaxed"
           >
             {t.hero.outcome}
-          </motion.p>
-
-          {/* Clarity Statement */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
-            className="text-xs text-white/60 sm:text-sm leading-relaxed"
-          >
-            {t.hero.clarity}
           </motion.p>
 
           {/* Buttons */}

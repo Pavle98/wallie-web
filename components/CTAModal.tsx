@@ -111,7 +111,7 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm"
           />
           
           {/* Modal */}
@@ -119,7 +119,8 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="relative w-full max-w-lg bg-[#0a0c0a] border border-white/10 p-6 md:p-8 max-h-[90vh] overflow-y-auto">
               <button

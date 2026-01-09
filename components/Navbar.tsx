@@ -79,7 +79,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
     { name: t.nav.faq, href: `/${locale}/faq`, isLink: true },
   ];
   
-  const contactLink = { name: t.nav.contact, href: "#contact" };
+  const contactLink = { name: t.nav.contact, href: `/${locale}/contact` };
 
   const getLocalePath = (newLocale: Locale) => {
     if (!pathname) return `/${newLocale}`;
