@@ -9,18 +9,19 @@ interface CTAModalProps {
   locale: Locale;
   isOpen: boolean;
   onClose: () => void;
+  projectType?: "b2b" | "b2c";
 }
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
-export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
+export default function CTAModal({ locale, isOpen, onClose, projectType = "b2b" }: CTAModalProps) {
   const t = getTranslations(locale);
   const [formState, setFormState] = useState<FormState>("idle");
   const [formData, setFormData] = useState({
     contact: "",
-    wallSize: "",
     message: "",
     location: "",
+    roomType: "",
   });
 
   // Validate contact field (email or phone)
@@ -35,12 +36,23 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
-    if (!validateContact(formData.contact) || !formData.message.trim()) {
+    if (!validateContact(formData.contact) || !formData.message.trim() || !formData.location.trim()) {
       setFormState("error");
       return;
     }
 
     setFormState("submitting");
+
+    // Combine room type into message if B2C and room type selected
+    let finalMessage = formData.message;
+    if (projectType === "b2c" && formData.roomType) {
+      const roomTypes = (t.sections.ctaModal as any).roomTypes;
+      const roomTypeQuestion = (t.sections.ctaModal as any).roomTypeQuestion;
+      if (roomTypes && roomTypeQuestion) {
+        const roomTypeText = roomTypes[formData.roomType] || formData.roomType;
+        finalMessage = `${roomTypeQuestion}: ${roomTypeText}\n\n${formData.message}`;
+      }
+    }
 
     try {
       // Formspree integration
@@ -54,11 +66,11 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
         },
         body: JSON.stringify({
           contact: formData.contact,
-          wallSize: formData.wallSize,
-          message: formData.message,
+          message: finalMessage,
           location: formData.location,
+          projectType: projectType === "b2b" ? "Poslovni prostor" : "Stan / kuća",
           locale: locale,
-          _subject: `New Inquiry from Wallie`,
+          _subject: projectType === "b2b" ? `[B2B] Wallie upit` : `[B2C] Wallie upit`,
         }),
       });
 
@@ -67,9 +79,9 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
         // Reset form
         setFormData({
           contact: "",
-          wallSize: "",
           message: "",
           location: "",
+          roomType: "",
         });
         // Auto-close after 3 seconds
         setTimeout(() => {
@@ -93,9 +105,9 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
         setFormState("idle");
         setFormData({
           contact: "",
-          wallSize: "",
           message: "",
           location: "",
+          roomType: "",
         });
       }, 300);
     }
@@ -169,10 +181,13 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
               ) : (
                 <>
                   <h2 className="mb-2 text-xl md:text-2xl font-bold uppercase tracking-tighter text-white pr-8">
-                    {t.sections.ctaModal.title}
+                    {projectType === "b2c" && (t.sections.ctaModal as any).titleB2C ? (t.sections.ctaModal as any).titleB2C : t.sections.ctaModal.title}
                   </h2>
                   <p className="mb-6 text-xs text-zinc-400 leading-relaxed pr-8">
-                    {t.sections.ctaModal.subtext}
+                    {projectType === "b2c" 
+                      ? ((t.sections.ctaModal as any).subtextB2C ?? t.sections.ctaModal.subtext)
+                      : ((t.sections.ctaModal as any).subtextB2B ?? t.sections.ctaModal.subtext)
+                    }
                   </p>
 
                   <form onSubmit={handleSubmit} className="space-y-3.5">
@@ -194,41 +209,10 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
                       />
                     </div>
 
-                    {/* Approximate wall size or scope - Optional */}
-                    <div>
-                      <label htmlFor="wallSize" className="block mb-1.5 text-xs font-mono uppercase tracking-wider text-zinc-400">
-                        {t.sections.ctaModal.wallSize} <span className="text-zinc-600">({t.sections.ctaModal.optional})</span>
-                      </label>
-                      <input
-                        id="wallSize"
-                        type="text"
-                        value={formData.wallSize}
-                        onChange={(e) => setFormData({ ...formData, wallSize: e.target.value })}
-                        placeholder={t.sections.ctaModal.wallSizePlaceholder}
-                        className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-white/20 transition-colors"
-                      />
-                    </div>
-
-                    {/* Short project description - Required */}
-                    <div>
-                      <label htmlFor="message" className="block mb-1.5 text-xs font-mono uppercase tracking-wider text-zinc-400">
-                        {t.sections.ctaModal.message} *
-                      </label>
-                      <textarea
-                        id="message"
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        placeholder={t.sections.ctaModal.messagePlaceholder}
-                        rows={3}
-                        className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-white/20 transition-colors resize-none"
-                        required
-                      />
-                    </div>
-
-                    {/* Location - Optional */}
+                    {/* Location - Required */}
                     <div>
                       <label htmlFor="location" className="block mb-1.5 text-xs font-mono uppercase tracking-wider text-zinc-400">
-                        {t.sections.ctaModal.location} <span className="text-zinc-600">({t.sections.ctaModal.optional})</span>
+                        {t.sections.ctaModal.location} *
                       </label>
                       <input
                         id="location"
@@ -237,6 +221,60 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
                         onChange={(e) => setFormData({ ...formData, location: e.target.value })}
                         placeholder={t.sections.ctaModal.locationPlaceholder}
                         className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-white/20 transition-colors"
+                        required
+                      />
+                    </div>
+
+                    {/* B2C: Room Type Quick Select - Optional */}
+                    {projectType === "b2c" && (t.sections.ctaModal as any).roomTypes && (
+                      <div>
+                        <p className="block mb-2 text-xs font-mono uppercase tracking-wider text-zinc-400">
+                          {(t.sections.ctaModal as any).roomTypeQuestion} <span className="text-zinc-600 font-normal lowercase">({t.sections.ctaModal.optional})</span>
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {Object.entries((t.sections.ctaModal as any).roomTypes).map(([key, label]) => (
+                            <button
+                              key={key}
+                              type="button"
+                              onClick={() => setFormData({ ...formData, roomType: formData.roomType === key ? "" : key })}
+                              className={`px-3 py-1.5 text-xs font-mono uppercase tracking-wider transition-all duration-200 border ${
+                                formData.roomType === key
+                                  ? "bg-white text-black border-white"
+                                  : "bg-zinc-950 text-zinc-400 border-zinc-800 hover:border-zinc-600 hover:text-zinc-300"
+                              }`}
+                            >
+                              {String(label)}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* B2B: Optional helper suggestions */}
+                    {projectType === "b2b" && (t.sections.ctaModal as any).wallSizeHelperB2B && (
+                      <div>
+                        <p className="text-xs text-zinc-500 mb-2">
+                          {(t.sections.ctaModal as any).wallSizeHelperB2B}
+                        </p>
+                      </div>
+                    )}
+
+                    {/* Message - Required */}
+                    <div>
+                      <label htmlFor="message" className="block mb-1.5 text-xs font-mono uppercase tracking-wider text-zinc-400">
+                        {t.sections.ctaModal.message} *
+                      </label>
+                      <textarea
+                        id="message"
+                        value={formData.message}
+                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                        placeholder={projectType === "b2c" 
+                          ? ((t.sections.ctaModal as any).messagePlaceholderB2C ?? t.sections.ctaModal.messagePlaceholder)
+                          : t.sections.ctaModal.messagePlaceholder
+                        }
+                        rows={3}
+                        className="w-full px-4 py-2.5 bg-zinc-950 border border-zinc-800 text-white text-sm focus:outline-none focus:border-white/20 transition-colors resize-none"
+                        required
                       />
                     </div>
 
@@ -253,7 +291,10 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
 
                     {/* Microcopy below submit */}
                     <p className="text-xs text-center text-zinc-400 leading-relaxed pt-1">
-                      {t.sections.ctaModal.microcopy}
+                      {projectType === "b2c" 
+                        ? ((t.sections.ctaModal as any).microcopyB2C ?? t.sections.ctaModal.microcopy)
+                        : ((t.sections.ctaModal as any).microcopyB2B ?? t.sections.ctaModal.microcopy)
+                      }
                     </p>
                   </form>
                 </>

@@ -6,7 +6,15 @@ import { useState } from "react";
 import { getTranslations, type Locale } from "@/lib/i18n";
 import CTAModal from "@/components/CTAModal";
 
-export default function Hero({ locale }: { locale: Locale }) {
+export default function Hero({ 
+  locale, 
+  projectType, 
+  setProjectType 
+}: { 
+  locale: Locale;
+  projectType: "b2b" | "b2c";
+  setProjectType: (type: "b2b" | "b2c") => void;
+}) {
   const t = getTranslations(locale);
   const [isModalOpen, setIsModalOpen] = useState(false);
   return (
@@ -91,19 +99,40 @@ export default function Hero({ locale }: { locale: Locale }) {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex flex-col gap-3"
           >
+            {/* Project Type Toggle */}
+            <div className="inline-flex items-center gap-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-sm p-1 w-fit">
+              <button
+                onClick={() => setProjectType("b2b")}
+                className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all duration-200 ${
+                  projectType === "b2b"
+                    ? "bg-white text-black"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                {t.hero.toggleB2B}
+              </button>
+              <button
+                onClick={() => setProjectType("b2c")}
+                className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all duration-200 ${
+                  projectType === "b2c"
+                    ? "bg-white text-black"
+                    : "text-white/70 hover:text-white"
+                }`}
+              >
+                {t.hero.toggleB2C}
+              </button>
+            </div>
+
             <button 
               onClick={() => setIsModalOpen(true)}
               className="group inline-flex items-center gap-3 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200"
             >
-              <span>{t.hero.cta}</span>
+              <span>{projectType === "b2b" ? ((t.hero as any).ctaB2B || t.hero.cta) : ((t.hero as any).ctaB2C || t.hero.cta)}</span>
               <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
             </button>
-            <CTAModal locale={locale} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+            <CTAModal locale={locale} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} projectType={projectType} />
             <p className="text-xs text-white/50">
               {t.hero.phone} · {t.hero.replyTime}
-            </p>
-            <p className="text-xs text-white/60">
-              {t.hero.microcopy}
             </p>
           </motion.div>
         </motion.div>

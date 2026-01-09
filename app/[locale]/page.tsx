@@ -1,12 +1,5 @@
 import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import SurfaceExplorer from "@/components/SurfaceExplorer";
-import ExecutionPartner from "@/components/ExecutionPartner";
-import PrinterRevealSlider from "@/components/PrinterRevealSlider";
-import TrustStack from "@/components/TrustStack";
-import ProofOfExecution from "@/components/ProofOfExecution";
-import CollaborationProcess from "@/components/CollaborationProcess";
-import MiniFAQ from "@/components/MiniFAQ";
+import LandingPageClient from "@/components/LandingPageClient";
 import { Instagram, Linkedin } from "lucide-react";
 import { getTranslations, type Locale, locales, defaultLocale } from "@/lib/i18n";
 import { redirect } from "next/navigation";
@@ -82,14 +75,7 @@ export default async function HomePage({
   return (
     <main className="min-h-screen bg-[#0a0c0a]">
       <Navbar locale={validLocale} />
-      <Hero locale={validLocale} />
-      <ExecutionPartner locale={validLocale} />
-      <SurfaceExplorer locale={validLocale} />
-      <PrinterRevealSlider locale={validLocale} />
-      <TrustStack locale={validLocale} />
-      <ProofOfExecution locale={validLocale} />
-      <CollaborationProcess locale={validLocale} />
-      <MiniFAQ locale={validLocale} />
+      <LandingPageClient locale={validLocale} />
 
       <footer className="border-t border-[#ededed]/10 bg-[#0a0c0a] py-12 px-4">
         <div className="mx-auto max-w-7xl">

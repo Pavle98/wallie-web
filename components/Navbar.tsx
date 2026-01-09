@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
 import { Bot, Menu, X, ChevronDown } from "lucide-react";
@@ -7,25 +8,59 @@ import { getTranslations, type Locale, locales } from "@/lib/i18n";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const localeNames: Record<Locale, string> = {
-  sr: "Serbian",
-  en: "English",
-  ru: "Русский",
+const localeNames: Record<Locale, Record<Locale, string>> = {
+  sr: {
+    sr: "Srpski",
+    en: "Engleski",
+    ru: "Ruski",
+  },
+  en: {
+    sr: "Serbian",
+    en: "English",
+    ru: "Russian",
+  },
+  ru: {
+    sr: "Сербский",
+    en: "Английский",
+    ru: "Русский",
+  },
 };
 
-// Language code display (flags removed)
+// Flag SVG components
+const SerbiaFlag = () => (
+  <svg width="20" height="15" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+    <rect width="60" height="10" y="0" fill="#C6363C" />
+    <rect width="60" height="10" y="10" fill="#0C4076" />
+    <rect width="60" height="10" y="20" fill="#FFFFFF" />
+  </svg>
+);
+
+const UKFlag = () => (
+  <svg width="20" height="15" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+    <rect width="60" height="30" fill="#012169" />
+    <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+    <path d="M30,0 L30,30 M0,15 L60,15" stroke="#fff" strokeWidth="10" />
+    <path d="M30,0 L30,30 M0,15 L60,15" stroke="#C8102E" strokeWidth="6" />
+  </svg>
+);
+
+const RussiaFlag = () => (
+  <svg width="20" height="15" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
+    <rect width="60" height="10" y="0" fill="#FFFFFF" />
+    <rect width="60" height="10" y="10" fill="#0039A6" />
+    <rect width="60" height="10" y="20" fill="#D52B1E" />
+  </svg>
+);
+
+// Language code display with flag
 const LanguageCode = ({ locale }: { locale: Locale }) => {
-  const codes: Record<Locale, string> = {
-    sr: "SR",
-    en: "EN",
-    ru: "RU",
+  const flags: Record<Locale, React.ReactElement> = {
+    sr: <SerbiaFlag />,
+    en: <UKFlag />,
+    ru: <RussiaFlag />,
   };
   
-  return (
-    <span className="text-xs font-mono text-white/60 uppercase">
-      {codes[locale]}
-    </span>
-  );
+  return flags[locale];
 };
 
 export default function Navbar({ locale }: { locale: Locale }) {
@@ -71,6 +106,8 @@ export default function Navbar({ locale }: { locale: Locale }) {
   }, []);
 
   const closeMenu = () => setIsOpen(false);
+  
+  const currentLocaleNames = localeNames[locale];
 
   const navLinks = [
     { name: t.nav.home, href: `/${locale}`, isLink: true },
@@ -123,6 +160,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                 aria-label="Change language"
               >
                 <LanguageCode locale={locale} />
+                <span className="text-xs font-mono text-white/60 uppercase">{locale.toUpperCase()}</span>
                 <ChevronDown className="h-2.5 w-2.5 text-white/40" />
               </button>
 
@@ -141,14 +179,14 @@ export default function Navbar({ locale }: { locale: Locale }) {
                         key={loc}
                         href={getLocalePath(loc)}
                         onClick={() => setIsLangDropdownOpen(false)}
-                        className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
+                        className={`flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors ${
                           locale === loc
                             ? "text-white bg-white/5"
                             : "text-white/70 hover:text-white hover:bg-white/5"
                         }`}
                       >
                         <LanguageCode locale={loc} />
-                        <span>{localeNames[loc]}</span>
+                        <span>{currentLocaleNames[loc]}</span>
                       </Link>
                     ))}
                   </motion.div>
@@ -269,7 +307,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                 <div className="border-t border-zinc-800 pt-6">
                   <div className="flex items-center gap-2 mb-3 text-sm text-white/60">
                     <LanguageCode locale={locale} />
-                    <span>{localeNames[locale]}</span>
+                    <span>{currentLocaleNames[locale]}</span>
                   </div>
                   <div className="flex flex-col gap-2">
                     {locales
@@ -282,7 +320,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                           className="flex items-center gap-2 text-lg text-white/80 hover:text-white transition-colors"
                         >
                           <LanguageCode locale={loc} />
-                          <span>{localeNames[loc]}</span>
+                          <span>{currentLocaleNames[loc]}</span>
                         </Link>
                       ))}
                   </div>

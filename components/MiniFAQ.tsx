@@ -6,33 +6,32 @@ import { ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { getTranslations, type Locale } from "@/lib/i18n";
 
-export default function MiniFAQ({ locale }: { locale: Locale }) {
+export default function MiniFAQ({ locale, projectType }: { locale: Locale; projectType: "b2b" | "b2c" }) {
   const t = getTranslations(locale);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  // Select 3 key questions: durability, wall surface requirements, pricing
-  const keyQuestionIndexes = [0, 6, 5]; // durability, wall surface requirements, pricing
-  const keyQuestions = keyQuestionIndexes.map((i) => ({
-    question: t.faq.questions[i],
-    answer: t.faq.answers[i],
-  }));
+  // Get B2B or B2C specific FAQ teaser
+  const teaserData = projectType === "b2c" 
+    ? (t.faq.teaser as any)?.b2c 
+    : (t.faq.teaser as any)?.b2b;
 
-  const labels = {
-    sr: {
-      title: "Najčešća pitanja",
-      viewAll: "Pogledaj sva pitanja →",
-    },
-    en: {
-      title: "Common questions",
-      viewAll: "View all questions →",
-    },
-    ru: {
-      title: "Частые вопросы",
-      viewAll: "Все вопросы →",
-    },
-  };
+  interface FAQItem {
+    question: string;
+    answer: string;
+  }
 
-  const label = labels[locale];
+  const keyQuestions: FAQItem[] = teaserData 
+    ? teaserData.questions.map((q: string, i: number) => ({
+        question: q,
+        answer: teaserData.answers[i] || "",
+      }))
+    : [];
+
+  const title = projectType === "b2c" 
+    ? (t.faq.teaser as any)?.titleB2C || "Česta pitanja za stan i kuću"
+    : (t.faq.teaser as any)?.titleB2B || "Česta pitanja za poslovne prostore";
+
+  const viewAllText = (t.faq.teaser as any)?.viewAll || (locale === "sr" ? "Vidi sva pitanja →" : locale === "en" ? "View all questions →" : "Все вопросы →");
 
   return (
     <section className="bg-[#0a0c0a] py-12 px-4">
@@ -44,7 +43,7 @@ export default function MiniFAQ({ locale }: { locale: Locale }) {
           transition={{ duration: 0.4 }}
           className="mb-6 text-sm font-mono uppercase tracking-wider text-zinc-400"
         >
-          {label.title}
+          {title}
         </motion.h2>
 
         <div className="space-y-2">
@@ -98,7 +97,7 @@ export default function MiniFAQ({ locale }: { locale: Locale }) {
             href={`/${locale}/faq`}
             className="text-xs font-mono text-zinc-500 hover:text-zinc-300 transition-colors"
           >
-            {label.viewAll}
+            {viewAllText}
           </Link>
         </motion.div>
       </div>

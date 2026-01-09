@@ -105,7 +105,7 @@ export default function ContactContent({ locale }: { locale: Locale }) {
           >
             {t.hero.cta}
           </button>
-          <CTAModal locale={locale} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+          <CTAModal locale={locale} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} projectType="b2b" />
         </div>
       </div>
     </div>
