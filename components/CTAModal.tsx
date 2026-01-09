@@ -115,18 +115,18 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
           />
           
           {/* Modal */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center p-4"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <div className="relative w-full max-w-lg bg-[#0a0c0a] border border-white/10 p-6 md:p-8 max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 z-[61] flex items-start justify-center pt-20 pb-4 px-4 md:items-center md:pt-4 pointer-events-none overflow-y-auto">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              className="relative w-full max-w-lg bg-[#0a0c0a] border border-white/10 p-6 md:p-8 max-h-[calc(90vh-5rem)] md:max-h-[90vh] overflow-y-auto pointer-events-auto my-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
               <button
                 onClick={handleClose}
                 disabled={formState === "submitting"}
-                className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors disabled:opacity-50 z-10"
+                className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors disabled:opacity-50 z-30"
                 aria-label="Close"
               >
                 <X className="h-5 w-5" />
@@ -258,8 +258,8 @@ export default function CTAModal({ locale, isOpen, onClose }: CTAModalProps) {
                   </form>
                 </>
               )}
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>
