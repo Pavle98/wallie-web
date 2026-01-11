@@ -138,7 +138,7 @@ export const translations = {
               "Bez građevinskih radova, bez prekida rada",
             ],
             result: "Završen brend zid istog dana, bez uticaja na rad prodavnice.",
-            image: null,
+            images: ["/examples/wall-printing-3d-effect.jpg", "/afterprint.png"],
           },
           {
             title: "Kancelarijski prostor",
@@ -154,7 +154,7 @@ export const translations = {
               "Kancelarija potpuno operativna sledećeg jutra",
             ],
             result: "Trenutna vizuelna transformacija bez uticaja na zaposlene ili raspored.",
-            image: null,
+            images: ["/afterprint.png", "/examples/wall-printing-3d-effect.jpg"],
           },
           {
             title: "Hotel / ugostiteljski interijer",
@@ -170,7 +170,7 @@ export const translations = {
               "Završeno u jednoj poseti",
             ],
             result: "Premium vizuelna nadogradnja bez duge instalacije ili remontnog prekida rada.",
-            image: null,
+            images: ["/examples/wall-printing-ceramic-tiles.jpg", "/afterprint.png"],
           },
           {
             title: "Eksterijer fasade",
@@ -186,7 +186,7 @@ export const translations = {
               "Bez dodatnih montaža ili panela",
             ],
             result: "Trajno spoljašnje brendiranje sa očekivanim vekom trajanja od 5–7 godina, direktno na zidu.",
-            image: null,
+            images: ["/examples/wall-printing-brick-facade-outdoor.jpg"],
           },
           {
             title: "Stambeni prostor",
@@ -202,7 +202,7 @@ export const translations = {
               "Minimalna buka, bez prašine ili hemijskih mirisa",
             ],
             result: "Gotov dekorativni zid istog dana, bez remontnih radova ili prekida u korišćenju prostora.",
-            image: null,
+            images: ["/examples/wall-printing-wood-panel.jpg", "/afterprint.png"],
           },
         ],
       },

@@ -15,6 +15,7 @@ interface SurfaceExplorerProps {
 export default function SurfaceExplorer({ locale, projectType }: SurfaceExplorerProps) {
   const t = getTranslations(locale);
   const [showMore, setShowMore] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   
   // Merged: 4 best examples showing materials + applications
   const allItems = [
@@ -24,8 +25,7 @@ export default function SurfaceExplorer({ locale, projectType }: SurfaceExplorer
     { name: t.materials.glass.name, image: "/examples/wall-printing-glass-uv.jpg", label: t.materials.glass.application, notes: t.materials.glass.notes },
   ];
 
-  // Limit based on projectType - but we only have 4 items, so show all always
-  // Keeping the logic for future expansion
+  // Mobile: accordion (1 open at a time), Desktop: grid
   const initialLimit = projectType === "b2b" ? 6 : 4;
   const itemsToShow = showMore ? allItems : allItems.slice(0, Math.min(initialLimit, allItems.length));
   const hasMore = allItems.length > initialLimit;
@@ -43,7 +43,77 @@ export default function SurfaceExplorer({ locale, projectType }: SurfaceExplorer
             {t.sections.applicationsAndMaterials}
           </h2>
 
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {/* Mobile: Accordion */}
+          <div className="md:hidden space-y-2">
+            {itemsToShow.map((item, index) => (
+              <motion.div
+                key={item.name}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="border border-zinc-800 bg-zinc-950/40"
+              >
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full flex items-center justify-between p-3 text-left"
+                >
+                  <h3 className="text-xs font-mono uppercase tracking-wide text-zinc-300">
+                    {item.name}
+                  </h3>
+                  <ChevronDown className={`h-4 w-4 text-zinc-500 transition-transform duration-200 ${openIndex === index ? "rotate-180" : ""}`} />
+                </button>
+                <AnimatePresence>
+                  {openIndex === index && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="px-3 pb-3">
+                        <div className="relative aspect-[4/3] border border-zinc-900 bg-zinc-950 overflow-hidden mb-2">
+                          <Image
+                            src={item.image}
+                            alt={`${item.name} - ${item.label}`}
+                            fill
+                            className="object-cover"
+                            sizes="100vw"
+                          />
+                        </div>
+                        <p className="mb-2 text-[10px] font-mono text-zinc-500">
+                          {item.label}
+                        </p>
+                        {item.notes && (
+                          <p className="text-[9px] font-mono leading-tight text-zinc-600">
+                            {item.notes}
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+            {hasMore && (
+              <div className="mt-4 text-center">
+                <button
+                  onClick={() => setShowMore(!showMore)}
+                  className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-zinc-400 hover:text-white transition-colors"
+                >
+                  <span>{showMore 
+                    ? (locale === "sr" ? "Prikaži manje" : locale === "en" ? "Show less" : "Показать меньше")
+                    : (locale === "sr" ? "Prikaži više" : locale === "en" ? "Show more" : "Показать больше")}
+                  </span>
+                  <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showMore ? "rotate-180" : ""}`} />
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Desktop: Grid */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-4">
             {itemsToShow.map((item, index) => (
               <motion.div
                 key={item.name}
@@ -84,9 +154,8 @@ export default function SurfaceExplorer({ locale, projectType }: SurfaceExplorer
             ))}
           </div>
 
-          {/* Show More/Less Toggle */}
           {hasMore && (
-            <div className="mt-6 text-center">
+            <div className="hidden md:block mt-8 text-center">
               <button
                 onClick={() => setShowMore(!showMore)}
                 className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-zinc-400 hover:text-white transition-colors"
