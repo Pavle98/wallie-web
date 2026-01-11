@@ -1,10 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { getTranslations, type Locale } from "@/lib/i18n";
-import CTAModal from "@/components/CTAModal";
 
 export default function Hero({ 
   locale, 
@@ -12,13 +10,29 @@ export default function Hero({
   setProjectType 
 }: { 
   locale: Locale;
-  projectType: "b2b" | "b2c";
+  projectType: "b2b" | "b2c" | null;
   setProjectType: (type: "b2b" | "b2c") => void;
 }) {
   const t = getTranslations(locale);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const helperText = (t.hero as any)?.pathSelectionHelper || (locale === "sr" 
+    ? "Izaberite tip prostora da bismo prikazali relevantne primere i proces."
+    : locale === "en"
+    ? "Choose space type to see relevant examples and process."
+    : "Выберите тип помещения, чтобы увидеть соответствующие примеры и процесс.");
+
+  const handlePathSelection = (type: "b2b" | "b2c") => {
+    setProjectType(type);
+    // Scroll to first section (Verifikacija izvršenja) after a brief delay
+    setTimeout(() => {
+      const firstSection = document.getElementById("verification");
+      if (firstSection) {
+        firstSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
+  };
+
   return (
-    <section className="relative flex min-h-[100svh] items-end justify-center overflow-hidden pb-24 pt-24 md:items-center md:justify-start md:pb-0 md:pt-20">
+    <section id="hero" className="relative flex min-h-[100svh] items-end justify-center overflow-hidden pb-24 pt-24 md:items-center md:justify-start md:pb-0 md:pt-20">
       {/* Video Background */}
       <video
         autoPlay
@@ -92,47 +106,29 @@ export default function Hero({
             {t.hero.outcome}
           </motion.p>
 
-          {/* Buttons */}
+          {/* Path Selection Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col gap-3"
+            className="flex flex-col gap-4"
           >
-            {/* Project Type Toggle */}
-            <div className="inline-flex items-center gap-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-sm p-1 w-fit">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <button
-                onClick={() => setProjectType("b2b")}
-                className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all duration-200 ${
-                  projectType === "b2b"
-                    ? "bg-white text-black"
-                    : "text-white/70 hover:text-white"
-                }`}
+                onClick={() => handlePathSelection("b2b")}
+                className="group flex-1 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200 text-center"
               >
                 {t.hero.toggleB2B}
               </button>
               <button
-                onClick={() => setProjectType("b2c")}
-                className={`px-4 py-2 text-xs font-mono uppercase tracking-wider transition-all duration-200 ${
-                  projectType === "b2c"
-                    ? "bg-white text-black"
-                    : "text-white/70 hover:text-white"
-                }`}
+                onClick={() => handlePathSelection("b2c")}
+                className="group flex-1 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200 text-center"
               >
                 {t.hero.toggleB2C}
               </button>
             </div>
-
-            <button 
-              onClick={() => setIsModalOpen(true)}
-              className="group inline-flex items-center gap-3 rounded-sm bg-white px-8 py-4 text-base font-bold uppercase tracking-wider text-black transition-all duration-300 hover:bg-gray-200"
-            >
-              <span>{projectType === "b2b" ? ((t.hero as any).ctaB2B || t.hero.cta) : ((t.hero as any).ctaB2C || t.hero.cta)}</span>
-              <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
-            </button>
-            <CTAModal locale={locale} isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} projectType={projectType} />
-            <p className="text-xs text-white/50">
-              {t.hero.phone} · {t.hero.replyTime}
+            <p className="text-xs text-white/60 text-center">
+              {helperText}
             </p>
           </motion.div>
         </motion.div>

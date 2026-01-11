@@ -1,24 +1,37 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
+import { useState } from "react";
 import { getTranslations, type Locale } from "@/lib/i18n";
 
-export default function SurfaceExplorer({ locale }: { locale: Locale }) {
+interface SurfaceExplorerProps {
+  locale: Locale;
+  projectType: "b2b" | "b2c";
+}
+
+export default function SurfaceExplorer({ locale, projectType }: SurfaceExplorerProps) {
   const t = getTranslations(locale);
+  const [showMore, setShowMore] = useState(false);
   
   // Merged: 4 best examples showing materials + applications
-  const items = [
+  const allItems = [
     { name: t.materials.concrete.name, image: "/textures/concrete.png", label: t.materials.concrete.application, notes: t.materials.concrete.notes },
     { name: t.materials.brick.name, image: "/examples/wall-printing-brick-facade-outdoor.jpg", label: t.materials.brick.application, notes: t.materials.brick.notes },
     { name: t.materials.wood.name, image: "/examples/wall-printing-wood-panel.jpg", label: t.materials.wood.application, notes: t.materials.wood.notes },
     { name: t.materials.glass.name, image: "/examples/wall-printing-glass-uv.jpg", label: t.materials.glass.application, notes: t.materials.glass.notes },
   ];
+
+  // Limit based on projectType - but we only have 4 items, so show all always
+  // Keeping the logic for future expansion
+  const initialLimit = projectType === "b2b" ? 6 : 4;
+  const itemsToShow = showMore ? allItems : allItems.slice(0, Math.min(initialLimit, allItems.length));
+  const hasMore = allItems.length > initialLimit;
   
   return (
-    <section className="relative bg-[#0a0c0a] py-12 px-4 md:px-8">
+    <section id="materials" className="relative bg-[#0a0c0a] py-12 px-4 md:px-8">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0 }}
@@ -31,9 +44,13 @@ export default function SurfaceExplorer({ locale }: { locale: Locale }) {
           </h2>
 
           <div className="grid grid-cols-2 gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {items.map((item, index) => (
-              <div
+            {itemsToShow.map((item, index) => (
+              <motion.div
                 key={item.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
                 className="border border-zinc-800 bg-zinc-950/40"
               >
                 <div className="p-3">
@@ -63,9 +80,25 @@ export default function SurfaceExplorer({ locale }: { locale: Locale }) {
                     </p>
                   )}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
+
+          {/* Show More/Less Toggle */}
+          {hasMore && (
+            <div className="mt-6 text-center">
+              <button
+                onClick={() => setShowMore(!showMore)}
+                className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-zinc-400 hover:text-white transition-colors"
+              >
+                <span>{showMore 
+                  ? (locale === "sr" ? "Prikaži manje" : locale === "en" ? "Show less" : "Показать меньше")
+                  : (locale === "sr" ? "Prikaži više" : locale === "en" ? "Show more" : "Показать больше")}
+                </span>
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showMore ? "rotate-180" : ""}`} />
+              </button>
+            </div>
+          )}
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -78,7 +111,7 @@ export default function SurfaceExplorer({ locale }: { locale: Locale }) {
               href={`/${locale}/portfolio`}
               className="inline-flex items-center gap-2 text-sm font-mono uppercase tracking-wider text-zinc-400 underline underline-offset-4 transition-colors hover:text-white"
             >
-              {t.sections.viewPortfolio || "View Portfolio"}
+              {t.sections.viewPortfolio}
               <ArrowRight className="h-4 w-4" />
             </Link>
           </motion.div>

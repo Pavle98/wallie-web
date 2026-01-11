@@ -140,7 +140,7 @@ export default function PrinterRevealSlider({ locale }: { locale: Locale }) {
   }, [isDragging, sliderWidth]);
 
   return (
-    <section id="technology" className="relative bg-[#0a0c0a] py-24 px-4">
+    <section id="verification" className="relative bg-[#0a0c0a] py-24 px-4">
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         {/* Section Intro */}
         <div className="mb-12">

@@ -13,7 +13,7 @@ export default function CollaborationProcess({ locale }: { locale: Locale }) {
   }));
 
   return (
-    <section className="bg-[#0a0c0a] py-16 px-4">
+    <section id="how-it-works" className="bg-[#0a0c0a] py-16 px-4">
       <div className="mx-auto max-w-4xl px-6 md:px-12">
         <motion.h2
           initial={{ opacity: 0 }}
