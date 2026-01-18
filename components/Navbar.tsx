@@ -141,7 +141,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                 className="h-16 md:h-20 w-auto"
                 priority
               />
-              <span className="text-3xl md:text-4xl lg:text-5xl font-bold lowercase tracking-tight bg-gradient-to-br from-cyan-400 via-blue-500 to-teal-600 bg-clip-text text-transparent">
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold lowercase tracking-tight bg-gradient-to-b from-white to-teal-200 bg-clip-text text-transparent">
                 wallie
               </span>
             </Link>

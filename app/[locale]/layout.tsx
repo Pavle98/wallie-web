@@ -1,6 +1,7 @@
 import { locales, type Locale, defaultLocale } from "@/lib/i18n";
 import { redirect } from "next/navigation";
 import { Inter } from "next/font/google";
+import type { Metadata } from "next";
 import "../globals.css";
 
 const inter = Inter({
@@ -11,6 +12,14 @@ const inter = Inter({
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
+
+export const metadata: Metadata = {
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
+};
 
 export default async function LocaleLayout({
   children,
