@@ -7,23 +7,13 @@ import { Bot, Menu, X, ChevronDown } from "lucide-react";
 import { getTranslations, type Locale, locales } from "@/lib/i18n";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 
-const localeNames: Record<Locale, Record<Locale, string>> = {
-  sr: {
-    sr: "Srpski",
-    en: "Engleski",
-    ru: "Ruski",
-  },
-  en: {
-    sr: "Serbian",
-    en: "English",
-    ru: "Russian",
-  },
-  ru: {
-    sr: "Сербский",
-    en: "Английский",
-    ru: "Русский",
-  },
+// Language names always in their native language (doesn't change based on current locale)
+const nativeLocaleNames: Record<Locale, string> = {
+  sr: "Srpski",
+  en: "English",
+  ru: "Русский",
 };
 
 // Flag SVG components
@@ -106,8 +96,6 @@ export default function Navbar({ locale }: { locale: Locale }) {
   }, []);
 
   const closeMenu = () => setIsOpen(false);
-  
-  const currentLocaleNames = localeNames[locale];
 
   const navLinks = [
     { name: t.nav.home, href: `/${locale}`, isLink: true },
@@ -143,10 +131,19 @@ export default function Navbar({ locale }: { locale: Locale }) {
           >
             <Link
               href={`/${locale}`}
-              className="flex items-center gap-3 text-2xl font-bold text-white transition-opacity hover:opacity-80"
+              className="flex items-center gap-3 transition-opacity hover:opacity-80"
             >
-              <Bot className="h-8 w-8 text-white" />
-              WALLIE
+              <Image
+                src="/logo.svg"
+                alt="Wallie Logo"
+                width={240}
+                height={64}
+                className="h-16 md:h-20 w-auto"
+                priority
+              />
+              <span className="text-3xl md:text-4xl lg:text-5xl font-bold lowercase tracking-tight bg-gradient-to-br from-cyan-400 via-blue-500 to-teal-600 bg-clip-text text-transparent">
+                wallie
+              </span>
             </Link>
           </motion.div>
 
@@ -186,7 +183,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                         }`}
                       >
                         <LanguageCode locale={loc} />
-                        <span>{currentLocaleNames[loc]}</span>
+                        <span>{nativeLocaleNames[loc]}</span>
                       </Link>
                     ))}
                   </motion.div>
@@ -307,7 +304,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                 <div className="border-t border-zinc-800 pt-6">
                   <div className="flex items-center gap-2 mb-3 text-sm text-white/60">
                     <LanguageCode locale={locale} />
-                    <span>{currentLocaleNames[locale]}</span>
+                    <span>{nativeLocaleNames[locale]}</span>
                   </div>
                   <div className="flex flex-col gap-2">
                     {locales
@@ -320,7 +317,7 @@ export default function Navbar({ locale }: { locale: Locale }) {
                           className="flex items-center gap-2 text-lg text-white/80 hover:text-white transition-colors"
                         >
                           <LanguageCode locale={loc} />
-                          <span>{currentLocaleNames[loc]}</span>
+                          <span>{nativeLocaleNames[loc]}</span>
                         </Link>
                       ))}
                   </div>
