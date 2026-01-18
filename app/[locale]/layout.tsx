@@ -15,9 +15,14 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   icons: {
-    icon: "/logo.svg",
+    icon: [
+      { url: "/logo.svg", type: "image/svg+xml" },
+      { url: "/logo.svg", sizes: "any", type: "image/svg+xml" },
+    ],
     shortcut: "/logo.svg",
-    apple: "/logo.svg",
+    apple: [
+      { url: "/logo.svg", sizes: "180x180", type: "image/svg+xml" },
+    ],
   },
 };
 
