@@ -138,12 +138,17 @@ export default function Navbar({ locale }: { locale: Locale }) {
                 alt="Wallie Logo"
                 width={240}
                 height={64}
-                className="h-16 md:h-20 w-auto"
+                className="h-12 md:h-16 w-auto"
                 priority
               />
-              <span className="text-3xl md:text-4xl lg:text-5xl font-bold lowercase tracking-tight bg-gradient-to-b from-[#6a7a7f] from-0% via-[#3d5358] via-60% to-[#233b40] to-100% bg-clip-text text-transparent">
-                wallie
-              </span>
+              <Image
+                src="/wallieText.svg"
+                alt="Wallie"
+                width={200}
+                height={64}
+                className="h-8 md:h-12 w-auto"
+                priority
+              />
             </Link>
           </motion.div>
 
