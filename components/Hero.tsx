@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getTranslations, type Locale } from "@/lib/i18n";
+import Image from "next/image";
 
 export default function Hero({ 
   locale, 
@@ -20,6 +21,30 @@ export default function Hero({
     ? "Choose space type to see relevant examples and process."
     : "Выберите тип помещения, чтобы увидеть соответствующие примеры и процесс.");
 
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  const [posterError, setPosterError] = useState(false);
+
+  // Progressive video loading: start after first paint + idle
+  useEffect(() => {
+    // Wait for first paint, then use requestIdleCallback or setTimeout fallback
+    const startVideo = () => {
+      if (videoRef.current) {
+        videoRef.current.load();
+        setShouldLoadVideo(true);
+      }
+    };
+
+    // Use requestIdleCallback if available (better for performance)
+    // This ensures video doesn't compete with LCP measurement
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      requestIdleCallback(startVideo, { timeout: 1000 });
+    } else {
+      // Fallback: start after a short delay (allows LCP to complete)
+      setTimeout(startVideo, 500);
+    }
+  }, []);
+
   const handlePathSelection = (type: "b2b" | "b2c") => {
     setProjectType(type);
     // Scroll to first section (Verifikacija izvršenja) after a brief delay
@@ -33,32 +58,57 @@ export default function Hero({
 
   return (
     <section id="hero" className="relative flex min-h-[100svh] items-end justify-center overflow-hidden pb-24 pt-24 md:items-center md:justify-start md:pb-0 md:pt-20">
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 h-full w-full object-cover"
-      >
-        <source
-          src="/wallpenhehe.mp4"
-          type="video/mp4"
-        />
-      </video>
+      {/* Video Background with Progressive Loading */}
+      <div className="absolute inset-0 h-full w-full bg-[#0a0c0a]">
+        {/* Poster Image - Shows immediately, replaced by video when ready */}
+        {/* Note: Add /public/hero-poster.jpg (or .webp/.avif) - should be a single frame from the video */}
+        {!posterError && (
+          <div className="absolute inset-0 h-full w-full">
+            <Image
+              src="/hero-poster.jpg"
+              alt=""
+              fill
+              className="object-cover"
+              priority
+              sizes="100vw"
+              style={{ opacity: shouldLoadVideo ? 0 : 1, transition: "opacity 0.5s ease-in-out" }}
+              onError={() => setPosterError(true)}
+            />
+          </div>
+        )}
+        
+        {/* Video - Loads progressively after first paint (doesn't block LCP) */}
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="none"
+          className="absolute inset-0 h-full w-full object-cover"
+          style={{ opacity: shouldLoadVideo ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
+          onLoadedData={() => {
+            if (videoRef.current) {
+              videoRef.current.play().catch(() => {
+                // Autoplay may fail, that's okay
+              });
+            }
+          }}
+        >
+          <source
+            src="/wallpenhehe.mp4"
+            type="video/mp4"
+          />
+        </video>
+      </div>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/35" />
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-4xl ml-0 px-6 md:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col gap-6"
-        >
-          {/* Headline - Immediately visible for LCP optimization */}
+        <div className="flex flex-col gap-6">
+          {/* Headline - Immediately visible for LCP optimization (no wrapper animation) */}
           <h1
             className="text-3xl font-bold uppercase tracking-tighter text-white text-left leading-tight sm:text-3xl md:text-3xl"
             style={{ letterSpacing: "-0.02em" }}
@@ -128,7 +178,7 @@ export default function Hero({
               {helperText}
             </p>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
