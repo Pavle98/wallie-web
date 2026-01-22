@@ -58,16 +58,13 @@ export default function Hero({
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="flex flex-col gap-6"
         >
-          {/* Headline */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+          {/* Headline - Immediately visible for LCP optimization */}
+          <h1
             className="text-3xl font-bold uppercase tracking-tighter text-white text-left leading-tight sm:text-3xl md:text-3xl"
             style={{ letterSpacing: "-0.02em" }}
           >
             {t.hero.headline}
-          </motion.h1>
+          </h1>
 
           {/* Subhead */}
           <motion.p
