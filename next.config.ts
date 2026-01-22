@@ -9,10 +9,11 @@ const nextConfig: NextConfig = {
   },
   // Enable compression
   compress: true,
-  // Headers for video optimization
+  // Headers for video, image, and font optimization
   async headers() {
     return [
       {
+        // Video files: aggressive caching + range requests for streaming
         source: "/:path*.mp4",
         headers: [
           {
@@ -26,7 +27,8 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:path*.jpg",
+        // Poster images: aggressive caching
+        source: "/:path*.{jpg,jpeg,png,webp,avif}",
         headers: [
           {
             key: "Cache-Control",
@@ -35,7 +37,18 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        source: "/:path*.webp",
+        // Font files: aggressive caching
+        source: "/:path*.{woff,woff2,ttf,otf}",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=31536000, immutable",
+          },
+        ],
+      },
+      {
+        // SVG files: aggressive caching
+        source: "/:path*.svg",
         headers: [
           {
             key: "Cache-Control",

@@ -25,9 +25,11 @@ export default function Hero({
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const [posterError, setPosterError] = useState(false);
 
-  // Progressive video loading: start after first paint + idle
+  // Progressive video loading: optimized for LCP stability
+  // Strategy: Wait for first paint + idle, then start video loading
   useEffect(() => {
-    // Wait for first paint, then use requestIdleCallback or setTimeout fallback
+    if (typeof window === "undefined") return;
+
     const startVideo = () => {
       if (videoRef.current) {
         videoRef.current.load();
@@ -35,14 +37,16 @@ export default function Hero({
       }
     };
 
-    // Use requestIdleCallback if available (better for performance)
-    // This ensures video doesn't compete with LCP measurement
-    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
-      requestIdleCallback(startVideo, { timeout: 1000 });
-    } else {
-      // Fallback: start after a short delay (allows LCP to complete)
-      setTimeout(startVideo, 500);
-    }
+    // Use requestAnimationFrame to wait for first paint
+    requestAnimationFrame(() => {
+      // Then use requestIdleCallback for optimal timing (doesn't block LCP)
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(startVideo, { timeout: 300 });
+      } else {
+        // Fallback: small delay after paint (allows LCP to complete)
+        setTimeout(startVideo, 200);
+      }
+    });
   }, []);
 
   const handlePathSelection = (type: "b2b" | "b2c") => {
@@ -84,7 +88,7 @@ export default function Hero({
           loop
           muted
           playsInline
-          preload="none"
+          preload="metadata"
           className="absolute inset-0 h-full w-full object-cover"
           style={{ opacity: shouldLoadVideo ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
           onLoadedData={() => {
@@ -108,7 +112,7 @@ export default function Hero({
       {/* Content */}
       <div className="relative z-10 w-full max-w-4xl ml-0 px-6 md:px-12">
         <div className="flex flex-col gap-6">
-          {/* Headline - Immediately visible for LCP optimization (no wrapper animation) */}
+          {/* Headline - Immediately visible, never wrapped in opacity animations for stable LCP */}
           <h1
             className="text-3xl font-bold uppercase tracking-tighter text-white text-left leading-tight sm:text-3xl md:text-3xl"
             style={{ letterSpacing: "-0.02em" }}
