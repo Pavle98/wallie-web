@@ -249,6 +249,12 @@ export const translations = {
         application: "Retail prostori",
         notes: "Potrebna posebna priprema za trajno prianjanje. Refleksija može uticati na čitljivost. Trajno prianjanje na čisto staklo. Ne preporučuje se za stakla sa premazom ili zaštitnim filmom.",
       },
+      wall: { 
+        name: "GLETOVANI ZIDOVI", 
+        label: "RAVNA • GLATKA", 
+        application: "Enterijeri i sobe",
+        notes: "Idealna podloga za fotorealistične printove i 3D efekte. Savršeno ravna površina omogućava prikaz najsitnijih detalja. Preporučuje se za dnevne boravke, dečije i spavaće sobe.",
+      },
     },
     trust: {
       completedProjects: "ZAVRŠENI PROJEKTI",
@@ -642,6 +648,12 @@ export const translations = {
         application: "Retail spaces",
         notes: "Special prep required for permanent adhesion. Reflection may affect readability. Permanent adhesion on clean glass. Not recommended for coated or protected glass.",
       },
+      wall: { 
+        name: "PLASTERED WALLS", 
+        label: "FLAT • SMOOTH", 
+        application: "Interiors and rooms",
+        notes: "Ideal substrate for photorealistic prints and 3D effects. Perfectly flat surface allows display of finest details. Recommended for living rooms, children's and bedrooms.",
+      },
     },
     trust: {
       completedProjects: "COMPLETED PROJECTS",
@@ -1034,6 +1046,12 @@ export const translations = {
         label: "НЕПОРИСТЫЙ • ОТРАЖАЮЩИЙ", 
         application: "Торговые помещения",
         notes: "Требуется специальная подготовка для постоянного сцепления. Отражение может влиять на читаемость. Постоянное сцепление на чистом стекле. Не рекомендуется для покрытого или защищенного стекла.",
+      },
+      wall: { 
+        name: "ОШТУКАТУРЕННЫЕ СТЕНЫ", 
+        label: "РОВНАЯ • ГЛАДКАЯ", 
+        application: "Интерьеры и комнаты",
+        notes: "Идеальная основа для фотореалистичных отпечатков и 3D-эффектов. Идеально ровная поверхность позволяет отображать мельчайшие детали. Рекомендуется для гостиных, детских и спален.",
       },
     },
     trust: {

@@ -17,12 +17,16 @@ export default function SurfaceExplorer({ locale, projectType }: SurfaceExplorer
   const [showMore, setShowMore] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   
-  // Merged: 4 best examples showing materials + applications
+  // Update this version number when you change texture images to force cache refresh
+  const TEXTURE_VERSION = "2";
+  
+  // Merged: 5 best examples showing materials + applications
   const allItems = [
-    { name: t.materials.concrete.name, image: "/textures/concrete.png", label: t.materials.concrete.application, notes: t.materials.concrete.notes },
-    { name: t.materials.brick.name, image: "/examples/wall-printing-brick-facade-outdoor.jpg", label: t.materials.brick.application, notes: t.materials.brick.notes },
-    { name: t.materials.wood.name, image: "/examples/wall-printing-wood-panel.jpg", label: t.materials.wood.application, notes: t.materials.wood.notes },
-    { name: t.materials.glass.name, image: "/examples/wall-printing-glass-uv.jpg", label: t.materials.glass.application, notes: t.materials.glass.notes },
+    { name: t.materials.concrete.name, image: `/textures/concrete.png?v=${TEXTURE_VERSION}`, label: t.materials.concrete.application, notes: t.materials.concrete.notes },
+    { name: t.materials.brick.name, image: `/textures/brick.png?v=${TEXTURE_VERSION}`, label: t.materials.brick.application, notes: t.materials.brick.notes },
+    { name: t.materials.wood.name, image: `/textures/wood.png?v=${TEXTURE_VERSION}`, label: t.materials.wood.application, notes: t.materials.wood.notes },
+    { name: t.materials.glass.name, image: `/textures/glass.png?v=${TEXTURE_VERSION}`, label: t.materials.glass.application, notes: t.materials.glass.notes },
+    { name: t.materials.wall.name, image: `/textures/wall.png?v=${TEXTURE_VERSION}`, label: t.materials.wall.application, notes: t.materials.wall.notes },
   ];
 
   // Mobile: accordion (1 open at a time), Desktop: grid
@@ -80,6 +84,7 @@ export default function SurfaceExplorer({ locale, projectType }: SurfaceExplorer
                             fill
                             className="object-cover"
                             sizes="100vw"
+                            unoptimized
                           />
                         </div>
                         <p className="mb-2 text-[10px] font-mono text-zinc-500">
@@ -133,6 +138,7 @@ export default function SurfaceExplorer({ locale, projectType }: SurfaceExplorer
                       style={{ objectPosition: index === 1 ? "center top" : "center" }}
                       priority={index < 2}
                       sizes="(max-width: 768px) 50vw, 25vw"
+                      unoptimized
                     />
                   </div>
                 </div>
