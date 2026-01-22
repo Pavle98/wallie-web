@@ -168,7 +168,7 @@ export default function PrinterRevealSlider({ locale }: { locale: Locale }) {
                 fill
                 className="object-contain md:object-cover"
                 priority
-                unoptimized
+                sizes="100vw"
               />
             </div>
 
@@ -183,7 +183,7 @@ export default function PrinterRevealSlider({ locale }: { locale: Locale }) {
                 fill
                 className="object-contain md:object-cover"
                 priority
-                unoptimized
+                sizes="100vw"
               />
             </div>
 

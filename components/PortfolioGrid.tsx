@@ -7,16 +7,10 @@ import { getTranslations, type Locale } from "@/lib/i18n";
 export default function PortfolioGrid({ locale }: { locale: Locale }) {
   const t = getTranslations(locale);
   
-  // Update this version number when you change texture images to force cache refresh
-  const TEXTURE_VERSION = "2";
-  
   const projects = t.portfolio.captions.map((caption, index) => {
     const textures = ["/textures/concrete.png", "/textures/brick.png", "/textures/wood.png", "/textures/glass.png"];
-    const baseImage = textures[index % textures.length];
-    // Add cache-busting query parameter to force refresh when image is updated
-    const imageWithCacheBust = `${baseImage}?v=${TEXTURE_VERSION}`;
     return {
-      image: imageWithCacheBust,
+      image: textures[index % textures.length],
       caption,
     };
   });
@@ -60,7 +54,8 @@ export default function PortfolioGrid({ locale }: { locale: Locale }) {
                   alt={project.caption}
                   fill
                   className="object-cover"
-                  unoptimized
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  loading="lazy"
                 />
               </div>
               <div className="border-t border-zinc-800 bg-zinc-950 px-4 py-3">
