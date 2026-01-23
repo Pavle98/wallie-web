@@ -24,6 +24,7 @@ export default function Hero({
   const videoRef = useRef<HTMLVideoElement>(null);
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
   const [posterError, setPosterError] = useState(false);
+  const [videoError, setVideoError] = useState(false);
 
   // Progressive video loading: optimized for LCP stability
   // Strategy: Wait for first paint + idle, then start video loading
@@ -82,28 +83,35 @@ export default function Hero({
         )}
         
         {/* Video - Loads progressively after first paint (doesn't block LCP) */}
-        <video
-          ref={videoRef}
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="metadata"
-          className="absolute inset-0 h-full w-full object-cover"
-          style={{ opacity: shouldLoadVideo ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
-          onLoadedData={() => {
-            if (videoRef.current) {
-              videoRef.current.play().catch(() => {
-                // Autoplay may fail, that's okay
-              });
-            }
-          }}
-        >
-          <source
-            src="/wallpenhehe.mp4"
-            type="video/mp4"
-          />
-        </video>
+        {!videoError && (
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted
+            playsInline
+            preload="metadata"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ opacity: shouldLoadVideo ? 1 : 0, transition: "opacity 0.5s ease-in-out" }}
+            onLoadedData={() => {
+              if (videoRef.current) {
+                videoRef.current.play().catch(() => {
+                  // Autoplay may fail, that's okay
+                });
+              }
+            }}
+            onError={(e) => {
+              // Silently handle video loading errors - poster image will remain visible
+              setVideoError(true);
+              console.warn("Video failed to load, using poster image instead");
+            }}
+          >
+            <source
+              src="/wallpenhehe.mp4"
+              type="video/mp4"
+            />
+          </video>
+        )}
       </div>
 
       {/* Dark Overlay */}
